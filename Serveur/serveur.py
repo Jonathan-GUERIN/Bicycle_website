@@ -15,18 +15,18 @@ import matplotlib.dates as pltd
 conn = sqlite3.connect('ter.db')
 c = conn.cursor()
 
-def creationcourbe(regions):
+def creationcourbe(stations):
     
     plt.figure(figsize=(18,4))
-    for region in regions:
-        c.execute('SELECT Date,Tauxderégularité FROM train WHERE Région="'+str(region)+'" ORDER BY Date ASC;')
+    for station in stations:
+        c.execute('SELECT Date,Tauxderégularité FROM train WHERE Région="'+str(station)+'" ORDER BY Date ASC;')
         
         requete = c.fetchall()
         
         x = [pltd.date2num(dt.date(int(a[0][:4]),int(a[0][5:]),1)) for a in requete if not a[1] == ''] 
         y = [float(a[1]) for a in requete if not a[1] == '']
         
-        plt.plot_date(x,y,linestyle='dashed',label=region)
+        plt.plot_date(x,y,linestyle='dashed',label=station)
     
     plt.ylim(80,100)
     plt.grid()
@@ -35,8 +35,8 @@ def creationcourbe(regions):
     plt.xlabel('Date')
     plt.title('Taux de régularité TER')
     string= 'images/'
-    for region in regions:
-        string = string + region
+    for station in stations:
+        string = string + station
     string = string +'.jpg'
     plt.savefig('client/'+string)
     return string
@@ -55,17 +55,11 @@ class RequestHandler(http.server.SimpleHTTPRequestHandler):
   def do_GET(self):
     self.init_params()
 
-    # prénom et nom dans le chemin d'accès
-    if self.path_info[0] == 'coucou':
-      self.send_html('<p>Bonjour {} {}</p>'.format(*self.path_info[1:]))
-
-    # prénom et nom dans la chaîne de requête
-    elif self.path_info[0] == "toctoc":
-      self.send_toctoc()
+    # renvoie toute les stations
+    if self.path_info[0] == 'stations':
+      self.send_stations()
     
-    elif self.path_info[0] == "toctocajax":
-      self.send_toctocajax()
-    
+    # liste des stations dans le chemin d'accès
     elif self.path_info[0] == "courbe":
       self.send_courbe(self.params['Region'])
 
@@ -99,15 +93,32 @@ class RequestHandler(http.server.SimpleHTTPRequestHandler):
     else:
       self.send_error(405)
 
-    
-  def send_courbe(self,regions):
+   
+    # renvoie la courbe des stations 
+  def send_courbe(self,stations):
       
-    link = creationcourbe(regions)
+    link = creationcourbe(stations)
     
     body = json.dumps({
          "linkimg": link
          })
     headers = [('Content-Type','application/json')]
+    self.send(body,headers)
+    
+  #################################################
+  ##################A faire #######################
+  #################################################
+    # renvoie toute les stations
+  def send_stations(self):
+
+    conn = sqlite3.connect('bdd.db')
+    c = conn.cursor()
+    
+    c.execute("SELECT  FROM ")
+    r = c.fetchall()
+    
+    headers = [('Content-Type','application/json')];
+    body = json.dumps([{'nom':n, 'lat':lat, 'lon': lon} for (n,lat,lon) in r])
     self.send(body,headers)
 
   # on envoie le document statique demandé
