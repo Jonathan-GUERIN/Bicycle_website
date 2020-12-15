@@ -14,7 +14,7 @@ Interaction serveur : Arthur
 Template
 ========
 
-page acceuil : 
+page accueil : 
 https://docs.google.com/drawings/d/1OxusXEH-W_TJJnDiCZXbTo2SNeLDwgkiSg0vB2YQSZA/edit?usp=sharing
 
 page carte : 
