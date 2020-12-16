@@ -76,7 +76,7 @@ class RequestHandler(http.server.SimpleHTTPRequestHandler):
     conn = sqlite3.connect('bdd.db')
     c = conn.cursor()
     
-    c.execute("SELECT  FROM ")
+    c.execute("SELECT nom, X, Y FROM stations ")
     r = c.fetchall()
     
     headers = [('Content-Type','application/json')];
