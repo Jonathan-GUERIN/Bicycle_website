@@ -8,6 +8,7 @@
 </head>
 
 <script>
+	/*
 	// Creation d'une carte dans la balise div "map", et positionne la vue sur un point donné et un niveau de zoom
 	var map = L.map('map').setView([46.5,2.5], 5);
 	// Ajout d'une couche de dalles OpenStreetMap
@@ -29,11 +30,16 @@
 			  .idreg=data[n].nom;   // propriété personnalisée ajouté au marqueur
 			}
 		};
-		xhr.open('GET','/regions',true);
+		xhr.open('GET','/stations',true);
 		xhr.send();
-	}
+	}*/
 
-	function OnMarkerClick (e) {
+	
+	function OnMarkerClick() {
+		var legende = document.getElementById('selectstation');
+		legende.innerText += '<br/>dr'+e;
+
+	/*function Affichegraphe (e) {
 		var xhr = new XMLHttpRequest();
 		var image =  document.querySelector('#reponse img'),
 			legende = document.querySelector('#reponse p');
@@ -45,7 +51,7 @@
 		  };
 		xhr.open('GET','/ponctualite/'+e.target.idreg,true);  // on récupère la courbe par un appel au serveur
 		xhr.send();
-	}
+	}*/
 </script>
 
 <style>
@@ -65,8 +71,8 @@
 		</fieldset>
 
 		<h3>Stations sélectionnées</h3>
-		<p id="selectstation"></p>
-
+		<p id="selectstation">srg</p>
+		<button onclick="OnMarkerClick()">Envoyer</button>
 	</div>
 
 	<div id="reponse">
