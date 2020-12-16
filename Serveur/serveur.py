@@ -75,7 +75,7 @@ class RequestHandler(http.server.SimpleHTTPRequestHandler):
 
   def send_stations(self):
 
-    conn = sqlite3.connect('bdd.db')
+    conn = sqlite3.connect('donnees/bdd.db')
     c = conn.cursor()
     
     c.execute("SELECT nom, X, Y FROM stations ")
