@@ -9,7 +9,7 @@ import courbes
 
 conn = sqlite3.connect('donnees/bdd.db')
 c = conn.cursor()
-port = 8081
+port = 8080
 
 # définition du handler
 class RequestHandler(http.server.SimpleHTTPRequestHandler):
@@ -142,6 +142,6 @@ class RequestHandler(http.server.SimpleHTTPRequestHandler):
 
 
 # instanciation et lancement du serveur
+print('Le serveur est lancé sur le port : ' + str(port))
 httpd = socketserver.TCPServer(("", port), RequestHandler)
 httpd.serve_forever()
-print(port)
