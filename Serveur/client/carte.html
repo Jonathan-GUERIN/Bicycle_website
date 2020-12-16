@@ -54,13 +54,25 @@
 
 <body onload="load_data()">  <!-- Récupération des données avec le chargement de la page -->
 
-	<h1>Régularité des TER</h1>
+	<h1>Disponibilité des vélo'v</h1>
 
 	<div id="map"></div>  
+	<div class="recherche">
+		<fieldset>
+			<input type="datetime">
+			<input type="datetime">
+			<input type="radio">
+		</fieldset>
+
+		<h3>Stations sélectionnées</h3>
+		<p id="selectstation"></p>
+
+	</div>
 
 	<div id="reponse">
 		<p align="center"></p>
 		<img width="70%" src="" />
 	</div>
 </body>
+
 

@@ -7,8 +7,9 @@ import json
 import sqlite3
 import courbes
 
-conn = sqlite3.connect('ter.db')
+conn = sqlite3.connect('donnees/bdd.db')
 c = conn.cursor()
+port = 8080
 
 # définition du handler
 class RequestHandler(http.server.SimpleHTTPRequestHandler):
@@ -25,7 +26,7 @@ class RequestHandler(http.server.SimpleHTTPRequestHandler):
 
     # renvoie toute les stations
     if self.path_info[0] == 'stations':
-      self.send_stations()
+        self.send_stations()
     
     # liste des stations dans le chemin d'accès
     elif self.path_info[0] == "courbe":
@@ -71,6 +72,7 @@ class RequestHandler(http.server.SimpleHTTPRequestHandler):
   ##################A faire #######################
   #################################################
     # renvoie toute les stations
+
   def send_stations(self):
 
     conn = sqlite3.connect('bdd.db')
@@ -145,5 +147,6 @@ class RequestHandler(http.server.SimpleHTTPRequestHandler):
 
 
 # instanciation et lancement du serveur
-httpd = socketserver.TCPServer(("", 8080), RequestHandler)
+httpd = socketserver.TCPServer(("", port), RequestHandler)
 httpd.serve_forever()
+print(port)
