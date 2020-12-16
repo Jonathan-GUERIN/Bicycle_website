@@ -2,8 +2,8 @@
 <head>
 	<script src="leaflet.js"> // insertion bibliothèque Leaflet : http://leafletjs.com/ </script>
 	<title>Carte</title>
-	<link rel="stylesheet" type="text/css" href="css/leaflet.css" /> 
-	<link rel="stylesheet" type="text/css" href="css/style.css"/>
+	<link rel="stylesheet" type="text/css" href="leaflet.css" /> 
+	<link rel="stylesheet" type="text/css" href="style.css"/>
 	<meta charset="utf-8">
 </head>
 
@@ -54,13 +54,25 @@
 
 <body onload="load_data()">  <!-- Récupération des données avec le chargement de la page -->
 
-	<h1>Régularité des TER</h1>
+	<h1>Disponibilité des vélo'v</h1>
 
 	<div id="map"></div>  
+	<div class="recherche">
+		<fieldset>
+			<input type="datetime">
+			<input type="datetime">
+			<input type="radio">
+		</fieldset>
+
+		<h3>Stations sélectionnées</h3>
+		<p id="selectstation"></p>
+
+	</div>
 
 	<div id="reponse">
 		<p align="center"></p>
 		<img width="70%" src="" />
 	</div>
 </body>
+
 
