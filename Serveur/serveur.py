@@ -17,8 +17,6 @@ class RequestHandler(http.server.SimpleHTTPRequestHandler):
   # sous-répertoire racine des documents statiques
   static_dir = '/client'
 
-  # version du serveur
-  server_version = 'TD3-serveur1.py/0.1'
 
   # on surcharge la méthode qui traite les requêtes GET
   def do_GET(self):
@@ -68,9 +66,6 @@ class RequestHandler(http.server.SimpleHTTPRequestHandler):
     headers = [('Content-Type','application/json')]
     self.send(body,headers)
     
-  #################################################
-  ##################A faire #######################
-  #################################################
     # renvoie toute les stations
 
   def send_stations(self):
