@@ -19,7 +19,7 @@ import sqlite3 as sq
 # station := une liste des id des stations
 
 def tracer_courbes_disp_velos(date_deb,date_fin,stations,pas):
-    con=sq.connect('bdd.bd')
+    con=sq.connect('donnees/bdd.bd')
     cur=con.cursor()
     for s in stations :
         cur.execute("SELECT time_ISO,bikes FROM historique WHERE velov_number='velov-'+{} ORDER BY time_ISO".format(chr(s)))
