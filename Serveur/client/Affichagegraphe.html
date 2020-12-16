@@ -1,0 +1,36 @@
+<html>
+<head>
+    <title>Requete AJAX</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body>
+    
+    <fieldset>
+        <legend>Ponctualité</legend>
+        <label>Région: <input id="Region" value='Auvergne'></label><button id='bouton'>Afficher courbe</button>
+    </fieldset>
+
+    <div id='reponse'>
+    </div>
+
+    <script>
+        document.getElementById('bouton').addEventListener('click', envoiformulaire);
+         
+        function envoiformulaire(e) {
+          var xhr = new XMLHttpRequest(); 
+          // on récupére le nom et le prénom
+          var reg = document.getElementById('Region').value;
+          xhr.onload = function() {   // fonction callback
+            // récupération des données renvoyées par le serveur
+            var data = JSON.parse(this.responseText);
+            // affichage dans la zone 'reponse' du prénom et du nom récupéré par l'appel au serveur
+            document.getElementById('reponse').innerHTML = '<img src=' +data.linkimg+' alt=courbe de ponctualité de '+reg+'></img>';
+            };
+          xhr.open('GET','/courbe?'+'Region='+reg,true);  // requête avec une "query string"
+          xhr.send();
+        }
+    </script>
+</body>
+</html>
