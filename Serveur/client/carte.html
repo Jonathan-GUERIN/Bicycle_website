@@ -1,58 +1,12 @@
 <!DOCTYPE html>
 <head>
-	<script src="leaflet.js"> // insertion bibliothèque Leaflet : http://leafletjs.com/ </script>
 	<title>Carte</title>
 	<link rel="stylesheet" type="text/css" href="css/leaflet.css" /> 
 	<link rel="stylesheet" type="text/css" href="css/style.css"/>
+	<script src="leaflet.js"> // insertion bibliothèque Leaflet : http://leafletjs.com/ </script>
 	<meta charset="utf-8">
 </head>
 
-<script>
-	/*
-	// Creation d'une carte dans la balise div "map", et positionne la vue sur un point donné et un niveau de zoom
-	var map = L.map('map').setView([46.5,2.5], 5);
-	// Ajout d'une couche de dalles OpenStreetMap
-	L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-		 attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-		 }).addTo(map);
-		 
-	function load_data () {
-		var xhr = new XMLHttpRequest();
-		xhr.onload = function() {   // fonction callback
-		  // récupération des données renvoyées par le serveur
-		  var data = JSON.parse(this.responseText);
-		  // boucle sur les enregistrements renvoyés
-		  for ( n = 0; n < data.length; n++ ) {
-			// insertion d'un marqueur à la position, attachement d'une popup, capture de l'évènement "clic'
-			L.marker([data[n].lat,data[n].lon]).addTo(map)
-			  .bindPopup(data[n].nom)
-			  .addEventListener('click',OnMarkerClick)
-			  .idreg=data[n].nom;   // propriété personnalisée ajouté au marqueur
-			}
-		};
-		xhr.open('GET','/stations',true);
-		xhr.send();
-	}*/
-
-	
-	function OnMarkerClick() {
-		var legende = document.getElementById('selectstation');
-		legende.innerText += '<br/>dr'+e;
-
-	/*function Affichegraphe (e) {
-		var xhr = new XMLHttpRequest();
-		var image =  document.querySelector('#reponse img'),
-			legende = document.querySelector('#reponse p');
-		xhr.onload = function() {   // fonction callback
-		  var data = JSON.parse(this.responseText)
-		  image.src = data.img;
-		  image.alt = data.title;
-		  legende.innerHTML = data.title;
-		  };
-		xhr.open('GET','/ponctualite/'+e.target.idreg,true);  // on récupère la courbe par un appel au serveur
-		xhr.send();
-	}*/
-</script>
 
 <style>
 #map { height: 400px; width: 400px; float:left; margin-left:20px; margin-right:20px;}
@@ -60,25 +14,68 @@
 
 <body onload="load_data()">  <!-- Récupération des données avec le chargement de la page -->
 
+
 	<h1>Disponibilité des vélo'v</h1>
 
 	<div id="map"></div>  
 	<div class="recherche">
 		<fieldset>
-			<input type="datetime">
-			<input type="datetime">
-			<input type="radio">
+			<input id='datedebut' type="datetime" value='2020-12-25'>
+			<input id='datefin' type="datetime" value='2020-12-25'>
+			<input id='pas' type="radio" value = '5min'>
 		</fieldset>
 
 		<h3>Stations sélectionnées</h3>
-		<p id="selectstation">srg</p>
-		<button onclick="OnMarkerClick()">Envoyer</button>
+		<p id="selectstation"></p>
+		<button onclick="Affichegraphe()">Afficher graphe</button>
 	</div>
 
-	<div id="reponse">
-		<p align="center"></p>
-		<img width="70%" src="" />
+	<div id="graphe">
 	</div>
 </body>
 
 
+
+<script>
+	// Creation d'une carte dans la balise div "map", et positionne la vue sur un point donné et un niveau de zoom
+	var map = L.map('map').setView([45.755,4.85], 12);
+	// Ajout d'une couche de dalles OpenStreetMap
+	L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'}).addTo(map);
+	
+	function load_data () {
+		var xhr = new XMLHttpRequest();
+		xhr.onload = function() {   // fonction callback
+		// récupération des données renvoyées par le serveur
+		var data = JSON.parse(this.responseText);
+		// boucle sur les enregistrements renvoyés
+		for ( n = 0; n < data.length; n++ ) {
+			// insertion d'un marqueur à la position, attachement d'une popup, capture de l'évènement "clic', ajout nom et id station
+			L.marker([data[n].lat,data[n].lon]).addTo(map).addEventListener('click',OnMarkerClick).idstat=data[n].nom;
+			}
+		};
+		xhr.open('GET','/stations',true);
+		xhr.send();
+	}	 
+	
+	function OnMarkerClick(e) {
+		var legende = document.getElementById('selectstation');
+		legende.innerHTML += e.target.idstat+'<br/>';
+	}
+	
+	function Affichegraphe () {
+		var xhr = new XMLHttpRequest(); 
+		  var pas = document.getElementById('pas').value;
+		  var datdeb = document.getElementById('datedebut').value;
+		  var datfin = document.getElementById('datefin').value;
+		  var stations = document.getElementById('selectstation').innerHTML;
+		  console.log(stations)
+          xhr.onload = function() {   // fonction callback
+            // récupération des données renvoyées par le serveur
+            var data = JSON.parse(this.responseText);
+            // affichage du graphe
+            document.getElementById('graphe').innerHTML = '<img src=' +data.linkimg+' alt=courbe de disponibilité de '+reg+'></img>';
+            };
+          xhr.open('GET','/courbe?'+'stations='+stations+'?'+'datedebut='+datdeb+'?'+'datefin='+datfin+'?'+'pas='+pas,true);  // requête avec une "query string"
+		  xhr.send();
+		}
+</script>
