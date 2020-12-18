@@ -26,7 +26,7 @@ class RequestHandler(http.server.SimpleHTTPRequestHandler):
     
     # liste des stations dans le chemin d'accès
     elif self.path_info[0] == "courbe":
-      self.send_courbe(self.params['Stations'])
+      self.send_courbe(self.params['stations'],self.params['pas'],self.params['datedebut'],self.params['datedebut'],)
 
     # requête générique
     elif self.path_info[0] == "service":
@@ -56,9 +56,23 @@ class RequestHandler(http.server.SimpleHTTPRequestHandler):
 
    
     # renvoie la courbe des stations 
-  def send_courbe(self,stations):
+  def send_courbe(self,stations,pas,datdeb,datfin):
       
-    link = courbes.creationcourbe(stations)
+    stations = stations.split('<br>')
+    stations.sort()
+    strstation =''
+    for station in stations:
+        strstation = strstation + station
+    
+    
+    c.execute("SELECT lien FROM cache WHERE stations ="+strstation+" AND pas = "+pas+" AND datedebut = "+datdeb+" AND datefin = "+datfin+";")
+    r = c.fetchall()
+    
+    if len(r) !=0:
+        link = r[0][0]
+    else:
+        link = courbes.creationcourbe(datdeb[0],datfin[0],stations,pas[0])
+        c.execute('INSERT INTO cache (stations, datedebut, datefin, pas, lien) VALUES ("'+str(strstation)+'","'+str(datdeb)+'","'+str(datfin)+'","'+str(pas)+'","'+str(link)+'");')
     
     body = json.dumps({"linkimg": link})
     headers = [('Content-Type','application/json')]
@@ -67,9 +81,6 @@ class RequestHandler(http.server.SimpleHTTPRequestHandler):
     # renvoie toute les stations
 
   def send_stations(self):
-
-    conn = sqlite3.connect('donnees/bdd.db')
-    c = conn.cursor()
     
     c.execute("SELECT nom, X, Y FROM stations ")
     r = c.fetchall()

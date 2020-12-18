@@ -24,6 +24,7 @@
 		</fieldset>
 
 		<h3>Stations sélectionnées</h3>
+		<p id="erreurstat">Vous devez sélectionner au moins une station</p>
 		<p id="selectstation"></p>
 		<button onclick="Affichegraphe()">Afficher graphe</button>
 	</div>
@@ -57,6 +58,7 @@
 	
 	function OnMarkerClick(e) {
 		var legende = document.getElementById('selectstation');
+		document.getElementById('erreurstat').setAttribute("style", "display:none;");
 		legende.innerHTML += e.target.idstat+'<br>';
 	}
 	
@@ -67,13 +69,17 @@
 		  var datfin = document.getElementById('datefin').value;
 		  var stations = document.getElementById('selectstation').innerHTML;
 		  console.log(stations)
-          xhr.onload = function() {   // fonction callback
-            // récupération des données renvoyées par le serveur
-            var data = JSON.parse(this.responseText);
-            // affichage du graphe
-            document.getElementById('graphe').innerHTML = '<img src=' +data.linkimg+' alt=courbe de disponibilité de '+reg+'></img>';
-            };
-          xhr.open('GET','/courbe?'+'stations='+stations+'?'+'datedebut='+datdeb+'?'+'datefin='+datfin+'?'+'pas='+pas,true);  // requête avec une "query string"
-		  xhr.send();
+		  if (stations!==""){ 
+			  xhr.onload = function() {   // fonction callback
+				// récupération des données renvoyées par le serveur
+				var data = JSON.parse(this.responseText);
+				// affichage du graphe
+				document.getElementById('graphe').innerHTML = '<img src=' +data.linkimg+' alt=courbe de disponibilité de '+stations+'></img>';
+				};
+			  xhr.open('GET','/courbe?stations='+stations+'&datedebut='+datdeb+'&datefin='+datfin+'&pas='+pas,true);  // requête avec une "query string"
+			  xhr.send();
+			} else {
+				document.getElementById('erreurstat').setAttribute("style", "display:inline;");
+			}
 		}
 </script>

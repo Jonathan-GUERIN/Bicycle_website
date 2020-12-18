@@ -25,7 +25,7 @@ def tracer_courbes_disp_velos(date_deb,date_fin,stations,pas):
     f=date_fin.isoformat()
     
     for s in stations :
-        cur.execute("SELECT time_ISO,bikes FROM historique WHERE velov_number='velov-'+{} and time_ISO>{} and time_ISO<{} ORDER BY time_ISO".format(chr(s),d,f))
+        cur.execute("SELECT time_ISO,bikes FROM historique WHERE velov_number='velov-'+{} and time_ISO>{} and time_ISO<{} ORDER BY time_ISO".format(str(s),d,f))
         l=cur.fetchall()
 
         L=[l[i][1]for i in range(0,pas/5,len(l))]   
