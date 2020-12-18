@@ -11,26 +11,35 @@
 
 
 <body onload="load_data()">  <!-- Récupération des données avec le chargement de la page -->
+	
+	<header class="nav">
+		<img src=images/logo_velov.png>
+		<nav>
+			<button type="button" onclick="window.location.href = 'index.html';"> Accueil </button>
+			<button type="button" onclick="window.location.href = 'carte.html';"> Carte </button>
+		</nav>
+		<img src=images/logo_metropole.png>
+	</header>
+	<section class="cartestation">
+		<h1>Disponibilité des vélo'v</h1>
 
+		<div id="map"></div>  
+		<div class="recherche">
+			<fieldset>
+				<input id='datedebut' type="datetime" value='2020-12-25'>
+				<input id='datefin' type="datetime" value='2020-12-25'>
+				<input id='pas' type="radio" value = '5min'>
+			</fieldset>
 
-	<h1>Disponibilité des vélo'v</h1>
+			<h3>Stations sélectionnées</h3>
+			<p id="erreurstat">Vous devez sélectionner au moins une station</p>
+			<p id="selectstation"></p>
+			<button onclick="Affichegraphe()">Afficher graphe</button>
+		</div>
 
-	<div id="map"></div>  
-	<div class="recherche">
-		<fieldset>
-			<input id='datedebut' type="datetime" value='2020-12-25'>
-			<input id='datefin' type="datetime" value='2020-12-25'>
-			<input id='pas' type="radio" value = '5min'>
-		</fieldset>
-
-		<h3>Stations sélectionnées</h3>
-		<p id="erreurstat">Vous devez sélectionner au moins une station</p>
-		<p id="selectstation"></p>
-		<button onclick="Affichegraphe()">Afficher graphe</button>
-	</div>
-
-	<div id="graphe">
-	</div>
+		<div id="graphe">
+		</div>
+	</section>
 </body>
 
 

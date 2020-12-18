@@ -1,29 +1,47 @@
 ﻿/* fond de page */
 body {
 	font-family: Trebuchet MS, sans-serif;
-	background-image: url('../images/logo_velov.png');
-	background-size: 100%;
-	background-repeat: no-repeat;
+	background-image:url("../images/unnamed.jpg");
 	background-attachment:fixed;
+	background-size:cover;
+	background-position: 10% 0;
+	background-repeat:no-repeat;
 	margin: 0;
 }
 
-header img:first-child{
-	width: 10%;
+.nav img:first-child{
+	height: 80px;
 }
 
-header img:last-child{
-	width: 35%;
+.nav img:last-child{
+	height:40px;
+	margin:auto 0;
 }
 
-header{
+.nav{
 	background-color:white;
-	background-attachment:fixed;
+	position:fixed;
+	top: 0;
 	border-bottom: 3px solid rgba(255,255,255,0.6);
 	padding: 15px 10%;
 	display:flex;
 	justify-content:space-between;
+	width:80%;
 	height:10%;
+	min-height:50px
+}
+
+.titre{
+	margin-top:10%;
+	height:500px
+}
+
+.cartestation{
+	background-color:white;
+	margin:0 auto;
+	margin-top:10%;
+	width:80%;
+	
 }
 
 nav{
