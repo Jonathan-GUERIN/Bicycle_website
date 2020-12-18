@@ -1,5 +1,3 @@
-# TD3-serveur1.py
-
 import http.server
 import socketserver
 from urllib.parse import urlparse, parse_qs, unquote

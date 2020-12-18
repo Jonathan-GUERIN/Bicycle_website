@@ -6,7 +6,7 @@ import datetime as dt
 import matplotlib.dates as pltd
 
 
-conn = sqlite3.connect('ter.db')
+conn = sqlite3.connect('donnees/bdd.db')
 c = conn.cursor()
 
 def creationcourbe(stations):
