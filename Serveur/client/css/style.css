@@ -27,7 +27,7 @@ body {
 	display:flex;
 	justify-content:space-between;
 	width:80%;
-	height:10%;
+	height:6%;
 	min-height:50px
 }
 
@@ -39,10 +39,10 @@ body {
 .cartestation{
 	background-color:white;
 	margin:0 auto;
-	margin-top:10%;
-	width:80%;
+	margin-top:7%;
+	width:100%;
     padding-top: 25px;
-	
+	display:flex;
 }
 
 nav{
@@ -52,6 +52,13 @@ nav{
 nav button{
 	margin: 0 25px;
 }	
+
+.recherche{
+	padding:20px;
+	color:white;
+	background-color:#272727; 
+	height:600px;
+}
 
 #erreurstat {
 	color:red;
@@ -64,9 +71,6 @@ nav button{
 }
 
 #map { 
-	height: 400px; 
-	width: 400px; 
-	float:left; 
-	margin-left:20px; 
-	margin-right:20px;
+	width: 80%; 
+	height:600px;
 }
