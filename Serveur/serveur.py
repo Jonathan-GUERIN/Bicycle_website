@@ -82,7 +82,7 @@ class RequestHandler(http.server.SimpleHTTPRequestHandler):
 
   def send_stations(self):
     
-    c.execute("SELECT nom, Y, X FROM stations ")
+    c.execute("SELECT nom, Y, X FROM stations WHERE ouverte = 'oui'")
     r = c.fetchall()
     
     headers = [('Content-Type','application/json')];

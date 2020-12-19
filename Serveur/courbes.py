@@ -37,8 +37,8 @@ def creationcourbe(date_deb,date_fin,stations,pas):
     plt.ylabel("Taux de disponibilité")
     plt.xlabel("Date")
     plt.title("Taux de disponibilité des vélo'v")
-    string= 'images/'+date_deb+date_fin+pas
-    ch='_'.join([chr(s) for s in stations])
+    string= 'images/graphes/'+date_deb+date_fin+pas
+    string=string + '_'.join([str(s) for s in stations])
     string = string +'.jpg'
     plt.savefig('client/'+string)
     return string
