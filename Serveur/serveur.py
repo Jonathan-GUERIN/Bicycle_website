@@ -124,6 +124,7 @@ class RequestHandler(http.server.SimpleHTTPRequestHandler):
      self.wfile.write(encoded)
 
 
+
   #     
   # on analyse la requête pour initialiser nos paramètres
   #

@@ -23,23 +23,25 @@
 	</header>
 	<section class="cartestation">
 		<div class="recherche">
-			<h1>Disponibilité des vélo'v</h1>
-			<fieldset>
-				<input id='datedebut' type="datetime-local" value='2019-12-25T14:00'>
-				<input id='datefin' type="datetime-local">
-				<script>
-					var now = new Date();
-					var mois = now.getMonth() + 1
-					var date = now.getFullYear()+'-'+mois+'-'+now.getDate()+'T'+now.getHours()+':'+now.getMinutes();
-					document.getElementById('datefin').setAttribute('value',date);
-					</script>
-				<input id='pas' type="radio" value = '5min'>
-			</fieldset>
+			<div style="position: fixed;">
+				<h1>Disponibilité des vélo'v</h1>
+				<fieldset>
+					<input id='datedebut' type="datetime-local" value='2019-12-25T14:00'>
+					<input id='datefin' type="datetime-local">
+					<script>
+						var now = new Date();
+						var mois = now.getMonth() + 1
+						var date = now.getFullYear()+'-'+mois+'-'+now.getDate()+'T'+now.getHours()+':'+now.getMinutes();
+						document.getElementById('datefin').setAttribute('value',date);
+						</script>
+					<input id='pas' type="radio" value = '5min'>
+				</fieldset>
 
-			<h3>Stations sélectionnées</h3>
-			<p id="erreurstat">Vous devez sélectionner au moins une station</p>
-			<p id="selectstation"></p>
-			<button onclick="Affichegraphe()">Afficher graphe</button>
+				<h3>Stations sélectionnées</h3>
+				<p id="erreurstat">Vous devez sélectionner au moins une station</p>
+				<p id="selectstation"></p>
+				<button onclick="Affichegraphe()">Afficher graphe</button>
+			</div>
 		</div>
 		<div id="map"></div>  
 
@@ -53,23 +55,17 @@
 <script>
 	var unselected = L.icon({
 		iconUrl: 'images/unselected.png',
-		shadowUrl: 'images/marker-shadow.png',
 
 		iconSize:     [45, 45], // size of the icon
-		shadowSize:   [41, 41], // size of the shadow
-		iconAnchor:   [21, 42], // point of the icon which will correspond to marker's location
-		shadowAnchor: [21, 42],  // the same for the shadow
+		iconAnchor:   [21, 30], // point of the icon which will correspond to marker's location
 		popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor	
 	});	
 	
 	var selected = L.icon({
 		iconUrl: 'images/selected.png',
-		shadowUrl: 'images/marker-shadow.png',
 
 		iconSize:     [45, 45], // size of the icon
-		shadowSize:   [41, 41], // size of the shadow
 		iconAnchor:   [21, 42], // point of the icon which will correspond to marker's location
-		shadowAnchor: [21, 42],  // the same for the shadow
 		popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
 	});
 	

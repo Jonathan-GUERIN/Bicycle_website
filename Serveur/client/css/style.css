@@ -27,8 +27,9 @@ body {
 	display:flex;
 	justify-content:space-between;
 	width:80%;
-	height:6%;
-	min-height:50px
+	height:7%;
+	min-height:50px;
+	z-index:7000;
 }
 
 .titre{
@@ -39,9 +40,8 @@ body {
 .cartestation{
 	background-color:white;
 	margin:0 auto;
-	margin-top:7%;
+	margin-top:6.5%;
 	width:100%;
-    padding-top: 25px;
 	display:flex;
 }
 
@@ -57,7 +57,8 @@ nav button{
 	padding:20px;
 	color:white;
 	background-color:#272727; 
-	height:600px;
+	height:1200px;
+	width:25%;
 }
 
 #erreurstat {
@@ -66,11 +67,11 @@ nav button{
 }
 
 #selectstation{
-	max-height:200px;
+	max-height:300px;
 	overflow-y:scroll;
 }
 
 #map { 
 	width: 80%; 
-	height:600px;
+	height:800px;
 }
