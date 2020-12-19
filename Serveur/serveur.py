@@ -7,7 +7,7 @@ import courbes
 
 conn = sqlite3.connect('donnees/bdd.db')
 c = conn.cursor()
-port = 8083
+port = 8080
 
 # définition du handler
 class RequestHandler(http.server.SimpleHTTPRequestHandler):
@@ -58,25 +58,23 @@ class RequestHandler(http.server.SimpleHTTPRequestHandler):
     # renvoie la courbe des stations 
   def send_courbe(self,stations,pas,datdeb,datfin):
       
-    stations = stations.split('<br>')
-    stations.sort()
+    liststations = stations.split(',')
+    liststations.sort()
+    liststations = [stat for stat in liststations if not stat == '']
     strstation =''
-    for station in stations:
+    for station in liststations:
         strstation = strstation + station
-    print(True)
-    print(strstation)
-    print(pas)
-    print(datdeb)
-    c.execute("SELECT lien FROM cache WHERE stations ="+strstation+" AND pas = "+pas+" AND datedebut = "+datdeb+" AND datefin = "+datfin+";")
+        
+    c.execute("SELECT lien FROM cache WHERE stations ='"+strstation+"' AND pas = '"+pas+"' AND datedebut = '"+datdeb+"' AND datefin = '"+datfin+"';")
     r = c.fetchall()
     
     if len(r) !=0:
         link = r[0][0]
     else:
-        link = courbes.creationcourbe(datdeb,datfin,stations,pas)
+        link = courbes.creationcourbe(datdeb,datfin,liststations,pas)
         c.execute('INSERT INTO cache (stations, datedebut, datefin, pas, lien) VALUES ("'+str(strstation)+'","'+str(datdeb)+'","'+str(datfin)+'","'+str(pas)+'","'+str(link)+'");')
     
-    body = json.dumps({"linkimg": link})
+    body = json.dumps({"linkimg": link},{"alt":stations})
     headers = [('Content-Type','application/json')]
     self.send(body,headers)
     
