@@ -50,6 +50,28 @@
 
 
 <script>
+	var unselected = L.icon({
+		iconUrl: 'images/unselected.png',
+		shadowUrl: 'images/marker-shadow.png',
+
+		iconSize:     [45, 45], // size of the icon
+		shadowSize:   [41, 41], // size of the shadow
+		iconAnchor:   [21, 42], // point of the icon which will correspond to marker's location
+		shadowAnchor: [21, 42],  // the same for the shadow
+		popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor	
+	});	
+	
+	var selected = L.icon({
+		iconUrl: 'images/selected.png',
+		shadowUrl: 'images/marker-shadow.png',
+
+		iconSize:     [45, 45], // size of the icon
+		shadowSize:   [41, 41], // size of the shadow
+		iconAnchor:   [21, 42], // point of the icon which will correspond to marker's location
+		shadowAnchor: [21, 42],  // the same for the shadow
+		popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+	});
+	
 	
 	// Creation d'une carte dans la balise div "map", et positionne la vue sur un point donné et un niveau de zoom
     var map = L.map('map', {center: [45.755,4.85],zoom: 13});
@@ -68,7 +90,8 @@
 			listeselstation.length = nbstat*3;
 			for ( n = 0; n < nbstat; n++ ) {
 				// insertion d'un marqueur à la position, attachement d'une popup, capture de l'évènement "clic', ajout nom de la station
-				L.marker([data[n].lat,data[n].lon]).addTo(map).addEventListener('click',OnMarkerClick).bindPopup(data[n].nom).nstat=data[n].nom;
+				L.marker([data[n].lat,data[n].lon],{icon: unselected}).addTo(map).addEventListener('click',OnMarkerClick).bindPopup(data[n].nom).nstat=data[n].nom;
+				}
 			};
 		
 		xhr.open('GET','/stations',true);
@@ -83,13 +106,14 @@
 			var legende = document.getElementById('selectstation'); // affichage de la station selectionnee
 			legende.innerHTML += '<span id=station'+idstat+'>'+e.target.nstat+'<br></span>';
 			document.getElementById('erreurstat').style.display = "none"; // invisibilise l'erreur de pas de station selectionnee
-			idstat+=1; 
+			idstat+=1;
+			e.setIcon(selected)
 		} else {
 			// station deja selectionnee
 			var i = listeselstation.indexOf(e.target.nstat)
 			listeselstation[i] = "";
 			document.getElementById('station'+i).remove()
-			
+			e.setIcon(unselected)
 		}
 	}
 	
