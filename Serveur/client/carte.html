@@ -5,7 +5,7 @@
 	<link rel="stylesheet" type="text/css" href="css/style.css"/>
     <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
-	<script src="leaflet.js"> // insertion bibliothèque Leaflet : http://leafletjs.com/ </script>
+	<script src="scripts/leaflet.js"> // insertion bibliothèque Leaflet : http://leafletjs.com/ </script>
 	<meta charset="utf-8">
 </head>
 
@@ -46,9 +46,9 @@
 
 <script>
 	// Creation d'une carte dans la balise div "map", et positionne la vue sur un point donné et un niveau de zoom
-	var map = L.map('map').setView([45.755,4.85], 12);
+    var map = L.map('map', {center: [45.755,4.85],zoom: 12});
 	// Ajout d'une couche de dalles OpenStreetMap
-	L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'}).addTo(map);
+	L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="https://carto.com/attribution">CARTO</a>'}).addTo(map);
 	
 	function load_data () {
 		var xhr = new XMLHttpRequest();
@@ -57,7 +57,7 @@
 		var data = JSON.parse(this.responseText);
 		// boucle sur les enregistrements renvoyés
 		for ( n = 0; n < data.length; n++ ) {
-			// insertion d'un marqueur à la position, attachement d'une popup, capture de l'évènement "clic', ajout nom et id station
+			// insertion d'un marqueur à la position, attachement d'une popup, capture de l'évènement "clic', ajout nom de la station
 			L.marker([data[n].lat,data[n].lon]).addTo(map).addEventListener('click',OnMarkerClick).idstat=data[n].nom;
 			}
 		};
@@ -67,7 +67,7 @@
 	
 	function OnMarkerClick(e) {
 		var legende = document.getElementById('selectstation');
-		document.getElementById('erreurstat').setAttribute("style", "display:none;");
+		document.getElementById('erreurstat').style.display = "none";
 		legende.innerHTML += e.target.idstat+'<br>';
 	}
 	
@@ -88,7 +88,7 @@
 			  xhr.open('GET','/courbe?stations='+stations+'&datedebut='+datdeb+'&datefin='+datfin+'&pas='+pas,true);  // requête avec une "query string"
 			  xhr.send();
 			} else {
-				document.getElementById('erreurstat').setAttribute("style", "display:inline;");
+				document.getElementById('erreurstat').style.display = "inline";
 			}
 		}
 </script>
