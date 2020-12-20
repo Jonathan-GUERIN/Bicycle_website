@@ -65,7 +65,7 @@
 		iconUrl: 'images/selected.png',
 
 		iconSize:     [45, 45], // size of the icon
-		iconAnchor:   [21, 42], // point of the icon which will correspond to marker's location
+		iconAnchor:   [21, 30], // point of the icon which will correspond to marker's location
 		popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
 	});
 	
@@ -104,13 +104,13 @@
 			legende.innerHTML += '<span id=station'+idstat+'>'+e.target.nstat+'<br></span>';
 			document.getElementById('erreurstat').style.display = "none"; // invisibilise l'erreur de pas de station selectionnee
 			idstat+=1;
-			e.setIcon(selected)
+			e.target.setIcon(selected)
 		} else {
 			// station deja selectionnee
 			var i = listeselstation.indexOf(e.target.nstat)
 			listeselstation[i] = "";
 			document.getElementById('station'+i).remove()
-			e.setIcon(unselected)
+			e.target.setIcon(unselected)
 		}
 	}
 	
