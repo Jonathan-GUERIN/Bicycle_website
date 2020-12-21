@@ -32,12 +32,11 @@ body {
 	justify-content:space-between;
 	width:80%;
 	height:90px;
-	min-height:50px;
 	z-index:7000;
 }
 
 .titre{
-	margin-top:13%;
+	padding-top:100px;
 	height:500px;
 	text-align: center;
 	color: white;
