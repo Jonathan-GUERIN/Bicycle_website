@@ -1,7 +1,14 @@
 ﻿/* fond de page */
 body {
-	font-family: Trebuchet MS, sans-serif;
+	font-family: 'Arial Black', Gadget, sans-serif;
+        text-align: center;
+        color: white;
+        text-shadow: 2px 2px 4px black;
+        letter-spacing: 2px;
+        font-weight: 10;
+        background-color:#bde0fe;
 	background-image:url("../images/Image_arriere_plan.jpg");
+        opacity: 50;
 	background-attachment:fixed;
 	background-size:cover;
 	background-position: 10% 0;
