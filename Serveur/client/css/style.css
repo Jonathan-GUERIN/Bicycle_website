@@ -32,11 +32,12 @@ body {
 	justify-content:space-between;
 	width:80%;
 	height:90px;
+	min-height:50px;
 	z-index:7000;
 }
 
 .titre{
-	padding-top:100px;
+	margin-top:13%;
 	height:500px;
 	text-align: center;
 	color: white;
@@ -65,7 +66,7 @@ nav button{
 	background:white;
 	font:bold 13px Arial;
 	color:black;
-	margin: 0 25px;
+	margin: 0 60px;
 }	
 
 aside{
