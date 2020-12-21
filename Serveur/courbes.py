@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 import sqlite3
 import matplotlib.pyplot as plt
 import datetime as dt
