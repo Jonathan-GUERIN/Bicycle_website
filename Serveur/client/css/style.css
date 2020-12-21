@@ -99,22 +99,39 @@ aside{
 
 .abonnements{
 	display: flex;
-   	color: black;
-	margin:15px
 }
 
 #offre{
 	position: relative;
    	background: white;
-	margin:25px;
-	width:25%
+	width:25%;
+	margin:15px;
+	box-shadow:0 0 7px 5px black;
+	border-radius: 10px / 10px;
+	text-align:center;
 }
 
 
 .nom{
-	font-family: 'Alice';
+	font-family: 'Alice', Gadget, sans-sherif;
+	font-size: 1.3vw;
+	color:grey;
         text-shadow: 0px 0px 0px black;
 }
+
+.programme{
+	font-family: 'Alice', Gadget, sans-sherif;
+	font-size: 2vw;
+        text-shadow: 0px 0px 0px black;
+}
+
+.details{
+	font-family: 'Alice', Gadget, sans-sherif;
+	font-size: 1vw;
+        text-shadow: 0px 0px 0px black;
+	margin:15px;
+}
+
 
 
 @media (max-width: 1100px) {
