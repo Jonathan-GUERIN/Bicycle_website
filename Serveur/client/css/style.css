@@ -1,73 +1,111 @@
 ﻿/* fond de page */
 body {
-  background-image: linear-gradient(0deg, red, orange, black);
-  background-size: 100%;
-  background-repeat: no-repeat;
-  color: white;
-  height: 100vh;
-  margin: 0;
-  /* pour éviter l'ascenseur */
-  border: 1px solid transparent;
-  box-sizing: border-box;
+	font-family: Trebuchet MS, sans-serif;
+	background-image:url("../images/Image_arriere_plan.jpg");
+	background-attachment:fixed;
+	background-size:cover;
+	background-position: 10% 0;
+	background-repeat:no-repeat;
+	margin: 0;
 }
 
-/* bandeau de titre */
-h1 { 
-  color: white;
-  border: none;
-  box-shadow: none;
-  background-color: rgba(255,255,255,0.3);
-  border-top: 3px solid rgba(255,255,255,0.6);
-  border-bottom: 3px solid rgba(255,255,255,0.6);
-  margin-top: 1.33em;
-  text-shadow: 3px 3px 3px black;
-  padding-top: 0.5em;
-  padding-bottom: 0.5em;
-  margin-bottom: 1.33em;
+.nav img:first-child{
+	height: 80px;
 }
 
-/* contenu de la page */
-body > * {   padding-left: 10px; }
-
-/* polices de caractères */
-body { font-family: Trebuchet MS, sans-serif; }
-
-/* positionnement des champs */
-label { display: block; }
-label span { display: inline-block; width: 5em; height: 1.5em; }
-
-
-input, textarea {
-  font-family: monospace;
-  padding: 2px 0.5em;
-  width: 5em;
-  font-size: 1.2em;
-  line-height: 1.33em;
-  color: #666;
-  margin-top: 5px;
-}
-.button {
-  border: 3px outset #444;
-  background-color: #888;
-  padding: 5px 0.5em;
-  border-radius: 3px;
-  display: inline-block;
-  margin: 1em 0;
-
-  color: #eee;
-  text-shadow: #000 -1px -1px 0;
-  right: calc(100% - 8em - 3px);
+.nav img:last-child{
+	height:40px;
+	margin:auto 0;
 }
 
-a {
-  text-decoration: none;
-  color: black;
-  cursor: pointer;
+.nav{
+	background-color:white;
+	position:fixed;
+	top: 0;
+	border-bottom: 3px solid rgba(255,255,255,0.6);
+	padding: 5px 10%;
+	display:flex;
+	justify-content:space-between;
+	width:80%;
+	height:90px;
+	min-height:50px;
+	z-index:7000;
 }
 
-a.delete:hover {
-  color: red;
+.titre{
+	margin-top:10%;
+	height:500px
+}
+
+.cartestation{
+	background-color:white;
+	margin:0 auto;
+	margin-top:100px;
+	width:100%;
+	display:flex;
+}
+
+nav{
+	margin:auto 0;
+}
+
+nav button{
+	margin: 0 25px;
+}	
+
+aside{
+	width:22%;
+	background-color:#272727; 
+	height:1200px;
+}
+
+.recherche{
+	padding:1%;
+	color:white;
+	width:20%;
+	position: fixed;
+}
+
+#erreurstat {
+	color:red;
+	display:none;
+}
+
+#selectstation{
+	max-height:300px;
+	overflow-y:scroll;
+}
+
+#map { 
+	width: 78%; 
+	height:620px;
 }
 
 
-#map { height: 400px; width: 400px; float:left; margin-left:20px; margin-right:20px;}
+@media (max-width: 1100px) {
+	
+	.cartestation{
+		flex-direction: column-reverse;
+	}
+	
+	#map { 
+		width: 100%; 
+		height:400px;
+	}
+
+	#selectstation{
+		max-height:150px;
+	}
+
+	aside{
+		width:100%;
+		max-height:400px;
+		height: fit-content;
+	}
+	
+	.recherche{
+		padding:2%;
+		width:96%;
+		position:relative;
+	}
+}
