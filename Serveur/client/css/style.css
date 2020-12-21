@@ -91,6 +91,7 @@ aside{
 .abonnements{
 	display: flex;
    	color: black;
+	margin:15px
 }
 
 #offre{
@@ -104,7 +105,8 @@ aside{
 }
 
 
-
+.nom{
+	font-family:
 
 
 @media (max-width: 1100px) {
