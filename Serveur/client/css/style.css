@@ -58,6 +58,13 @@ nav{
 }
 
 nav button{
+	border-radius:12px 0 12px 0;
+        border-color: red;
+	padding:1em 2em 1em 2em;
+	border-radius:10px;
+	background:white;
+	font:bold 13px Arial;
+	color:black;
 	margin: 0 25px;
 }	
 
