@@ -96,17 +96,16 @@ aside{
 
 #offre{
 	position: relative;
-   	top: 20px;
-   	left: 20px;
    	background: white;
-   	width: 200px;
-	height: 300px;
 	margin:25px;
+	width:25%
 }
 
 
 .nom{
-	font-family:
+	font-family: 'Alice';
+        text-shadow: 0px 0px 0px black;
+}
 
 
 @media (max-width: 1100px) {
