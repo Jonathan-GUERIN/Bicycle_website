@@ -88,24 +88,21 @@ aside{
 	height:620px;
 }
 
-.abonnement{
+.abonnements{
 	display: flex;
-   	background: white;
-   	width: 200px;
-   	height: 300px;
    	color: black;
 }
 
-#abonnement1{
+#offre{
 	position: relative;
    	top: 20px;
    	left: 20px;
+   	background: white;
+   	width: 200px;
+	height: 300px;
+	margin:25px;
 }
 
-#abonnement2{
-	position:relative;
-	left:20px
-}
 
 
 
