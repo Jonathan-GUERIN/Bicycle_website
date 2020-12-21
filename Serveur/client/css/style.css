@@ -7,13 +7,13 @@ body {
         letter-spacing: 2px;
         font-weight: 10;
         background-color:#bde0fe;
-	background-image:url("../images/Image_arriere_plan.jpg");
-        opacity: 50;
+	background-image:url("../images/Image_arriere_plan_moins_foncée.jpg");
 	background-attachment:fixed;
 	background-size:cover;
 	background-position: 10% 0;
 	background-repeat:no-repeat;
 	margin: 0;
+        filter: brightness{50%};
 }
 
 .nav img:first-child{
@@ -40,7 +40,7 @@ body {
 }
 
 .titre{
-	margin-top:10%;
+	margin-top:13%;
 	height:500px
 }
 
@@ -56,9 +56,15 @@ nav{
 	margin:auto 0;
 }
 
-nav button{
-	margin: 0 25px;
-}	
+nav button {
+	border-radius:12px 0 12px 0;
+        border-color: red;
+	padding:1em 2em 1em 2em;
+	border-radius:10px;
+	background:white;
+	font:bold 13px Arial;
+	color:black;
+}
 
 aside{
 	width:22%;
