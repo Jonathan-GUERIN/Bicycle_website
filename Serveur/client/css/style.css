@@ -1,9 +1,9 @@
 ﻿/* fond de page */
 body {
 	font-family: 'Arial Black', Gadget, sans-serif;
-        text-align: center;
         color: white;
         text-shadow: 2px 2px 4px black;
+        text-align: center;
         letter-spacing: 2px;
         font-weight: 10;
         background-color:#bde0fe;
@@ -11,9 +11,8 @@ body {
 	background-attachment:fixed;
 	background-size:cover;
 	background-position: 10% 0;
-	background-repeat:no-repeat;
+	background-repeat: no-repeat;
 	margin: 0;
-        filter: brightness{50%};
 }
 
 .nav img:first-child{
@@ -22,7 +21,7 @@ body {
 
 .nav img:last-child{
 	height:40px;
-	margin:auto 0;
+	margin:auto -4em;
 }
 
 .nav{
@@ -41,7 +40,8 @@ body {
 
 .titre{
 	margin-top:13%;
-	height:500px
+	height:500px;
+        text-align: center;
 }
 
 .cartestation{
@@ -56,7 +56,7 @@ nav{
 	margin:auto 0;
 }
 
-nav button {
+button {
 	border-radius:12px 0 12px 0;
         border-color: red;
 	padding:1em 2em 1em 2em;
@@ -64,6 +64,7 @@ nav button {
 	background:white;
 	font:bold 13px Arial;
 	color:black;
+        margin: auto 4em;
 }
 
 aside{
