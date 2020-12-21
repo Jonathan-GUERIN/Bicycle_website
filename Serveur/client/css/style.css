@@ -1,16 +1,8 @@
-﻿/* fond de page */
+﻿/* commun */
 body {
 	font-family: 'Arial Black', Gadget, sans-serif;
 	margin: 0;
-}
-
-.background{
-	background-image:url("../images/Image_arriere_plan_foncée.jpg");
-	background-attachment:fixed;
-	background-size:cover;
-	background-position: 10% 0;
-	background-repeat:no-repeat;
-	margin: 0;
+	color: white;
 }
 
 .nav img:first-child{
@@ -36,53 +28,20 @@ body {
 	z-index:7000;
 }
 
-.titre{
-	padding-top:100px;
-	height:500px;
-	text-align: center;
-	color: white;
-	text-shadow: 2px 2px 4px black;
-	letter-spacing: 2px;
-	font-weight: 10;
-}
-
-.titresection{
-	text-align: center;
-	color: white;
-	text-shadow: 2px 2px 4px black;
-	letter-spacing: 2px;
-	font-weight: 10;
-}
-
-.soustitre{
-	text-align: center;
-	color: white;
-	text-shadow: 2px 2px 4px black;
-	letter-spacing: 2px;
-	font-weight: 10;
-        padding: 0em 18em 6em;
-}
-
-.cartestation{
-	background-color:white;
-	margin:0 auto;
-	margin-top:100px;
-	width:100%;
-	display:flex;
-}
 
 nav{
 	margin:auto 0;
 }
 
 button{
+	color: white;
 	border-color: red;
-	padding:1em 2em 1em 2em;
+	text-transform: uppercase;
+	padding:1em 2em;
 	border-radius:10px;
 	background-color:red;
 	font:bold 13px Arial;
-	color:white;
-	margin: 0 25px;
+	margin: 0 60px;
     transition: all 0.2s ease-in;
     -webkit-transition: all 0.2s ease-in;
 }	
@@ -96,15 +55,96 @@ button:hover{
     border-bottom: 1px solid;
 }
 
+
+/* Accueil */
+
+.background{
+	background-image:url("../images/Image_arriere_plan_foncée.jpg");
+	background-attachment:fixed;
+	background-size:cover;
+	background-position: 10% 0;
+	background-repeat:no-repeat;
+	margin: 0;
+}
+
+.titre{
+	margin-top:100px;
+	padding: 75px 0;
+	height:200px;
+	text-align: center;
+	text-shadow: 2px 2px 4px black;
+	letter-spacing: 2px;
+	font-weight: 10;
+}
+
+.titre h2{
+    padding: 0em 18em 6em;
+}
+
+.titreoffre{
+	display: flex;
+    flex-direction: column;
+    margin-left: 70%;
+	text-shadow: 2px 2px 4px black;
+	letter-spacing: 2px;
+	font-weight: 10;
+}
+
+.abonnements{
+	display: flex;
+   	color: black;
+	margin:15px;
+}
+
+#offre{
+    border-radius:12px 12px 12px 12px;
+	position: relative;
+   	background-color: white;
+	margin:1%;
+    padding:2em;
+	width:20%;
+    height:25em;
+    text-align: center;
+	font-family: 'Alice', Gadget, sans-sherif;
+}
+
+.nom{
+    color: grey;
+}
+
+.programme{
+	margin: 0em 0em 5em 0em;
+}
+
+.details{
+	font-size: 1vw;
+	margin:15px;
+}
+
+
+/* Carte */
+.cartestation{
+	background-color:white;
+	margin:0 auto;
+	margin-top:100px;
+	width:100%;
+	display:flex;
+}
+
+
 aside{
 	width:22%;
 	background-color:#272727; 
 	height:1200px;
 }
 
+aside button{
+	margin: 5px auto;
+	width:100%;
+}
+
 .recherche{
 	padding:1%;
-	color:white;
 	width:20%;
 	position: fixed;
 }
@@ -124,35 +164,8 @@ aside{
 	height:620px;
 }
 
-.abonnements{
-	display: flex;
-   	color: black;
-	margin:15px;
-}
 
-#offre{
-        border-radius:12px 12px 12px 12px;
-	position: relative;
-   	background: white;
-	margin:1%;
-        padding:2em;
-	width:20%;
-        height:25em;
-        text-align: center;
-}
-
-
-.nom{
-	font-family: 'Alice';
-        text-shadow: 0px 0px 0px black;
-        color: grey;
-}
-
-.programme{
-        font-family:'Alice';
-        margin: 0em 0em 5em 0em;
-}
-
+/* Responsive */
 
 @media (max-width: 1100px) {
 	
