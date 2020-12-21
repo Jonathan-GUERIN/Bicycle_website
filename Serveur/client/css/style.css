@@ -57,16 +57,26 @@ nav{
 	margin:auto 0;
 }
 
-nav button{
-	border-radius:12px 0 12px 0;
-        border-color: red;
+button{
+	border-color: red;
 	padding:1em 2em 1em 2em;
 	border-radius:10px;
-	background:white;
+	background-color:red;
 	font:bold 13px Arial;
-	color:black;
+	color:white;
 	margin: 0 25px;
+    transition: all 0.2s ease-in;
+    -webkit-transition: all 0.2s ease-in;
 }	
+
+button:hover{
+	background-color:white;
+	color:black;
+	cursor:pointer;
+    transform: translate(0px,2px);
+    -webkit-transform: translate(0px,2px);
+    border-bottom: 1px solid;
+}
 
 aside{
 	width:22%;
@@ -103,8 +113,8 @@ aside{
 #offre{
 	position: relative;
    	background: white;
-	width:25%;
-	margin:15px;
+	width:23%;
+	margin:1%;
 	box-shadow:0 0 7px 5px black;
 	border-radius: 10px / 10px;
 	text-align:center;
