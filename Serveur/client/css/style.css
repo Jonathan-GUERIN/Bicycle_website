@@ -91,22 +91,22 @@ aside{
 .abonnement{
 	display: flex;
    	background: white;
-   	width: 200px;
-   	height: 300px;
    	color: black;
+	margin:15px
 }
 
 #abonnement1{
 	position: relative;
-   	top: 20px;
-   	left: 20px;
+   	margin:15px
 }
 
 #abonnement2{
 	position:relative;
-	left:20px
+	margin:15px
 }
 
+.nom{
+	font-family:
 
 
 
