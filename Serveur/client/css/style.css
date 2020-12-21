@@ -5,7 +5,7 @@ body {
 }
 
 .background{
-	background-image:url("../images/Image_arriere_plan.jpg");
+	background-image:url("../images/Image_arriere_plan_foncée.jpg");
 	background-attachment:fixed;
 	background-size:cover;
 	background-position: 10% 0;
@@ -45,6 +45,15 @@ body {
 	letter-spacing: 2px;
 	font-weight: 10;
 }
+
+.titresection{
+	text-align: center;
+	color: white;
+	text-shadow: 2px 2px 4px black;
+	letter-spacing: 2px;
+	font-weight: 10;
+}
+
 
 .cartestation{
 	background-color:white;
