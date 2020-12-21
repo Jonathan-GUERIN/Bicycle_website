@@ -1,17 +1,18 @@
 ﻿/* fond de page */
 body {
 	font-family: 'Arial Black', Gadget, sans-serif;
+        text-align: center;
         color: white;
         text-shadow: 2px 2px 4px black;
-        text-align: center;
         letter-spacing: 2px;
         font-weight: 10;
         background-color:#bde0fe;
-	background-image:url("../images/Image_arriere_plan_moins_foncée.jpg");
+	background-image:url("../images/Image_arriere_plan.jpg");
+        opacity: 50;
 	background-attachment:fixed;
 	background-size:cover;
 	background-position: 10% 0;
-	background-repeat: no-repeat;
+	background-repeat:no-repeat;
 	margin: 0;
 }
 
@@ -21,7 +22,7 @@ body {
 
 .nav img:last-child{
 	height:40px;
-	margin:auto -4em;
+	margin:auto 0;
 }
 
 .nav{
@@ -40,8 +41,7 @@ body {
 
 .titre{
 	margin-top:13%;
-	height:500px;
-        text-align: center;
+	height:500px
 }
 
 .cartestation{
@@ -56,16 +56,9 @@ nav{
 	margin:auto 0;
 }
 
-button {
-	border-radius:12px 0 12px 0;
-        border-color: red;
-	padding:1em 2em 1em 2em;
-	border-radius:10px;
-	background:white;
-	font:bold 13px Arial;
-	color:black;
-        margin: auto 4em;
-}
+nav button{
+	margin: 0 25px;
+}	
 
 aside{
 	width:22%;
@@ -93,6 +86,25 @@ aside{
 #map { 
 	width: 78%; 
 	height:620px;
+}
+
+.abonnements{
+	display: flex;
+   	color: black;
+	margin:15px
+}
+
+#offre{
+	position: relative;
+   	background: white;
+	margin:25px;
+	width:25%
+}
+
+
+.nom{
+	font-family: 'Alice';
+        text-shadow: 0px 0px 0px black;
 }
 
 
