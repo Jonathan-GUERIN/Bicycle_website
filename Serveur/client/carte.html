@@ -26,14 +26,17 @@
 			<div class="recherche">
 				<h1>Disponibilité des vélo'v</h1>
 				<fieldset>
-					Date de début : <input id='datedebut' type="datetime-local" value='2019-12-25T14:00'></br>
-					Date de fin : <input id='datefin' type="datetime-local">
+					<p>Date de début :</p>
+					<input id='datedebut' type="datetime-local" value='2019-12-25T14:00'>
+					<p>Date de fin : </p>
+					<input id='datefin' type="datetime-local">
 					<script>
 						var now = new Date();
 						var mois = now.getMonth() + 1
 						var date = now.getFullYear()+'-'+mois+'-'+now.getDate()+'T'+now.getHours()+':'+now.getMinutes();
 						document.getElementById('datefin').setAttribute('value',date);
 					</script>
+				<p>Pas du graphique</p>
 				<select id="pas">
 					<option value="5">5 minutes</option>
 					<option value="30">30 minutes</option>
