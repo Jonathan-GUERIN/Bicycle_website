@@ -125,10 +125,7 @@
 		  var pas = document.getElementById('pas').options[document.getElementById('pas').selectedIndex].value;
 		  var datdeb = document.getElementById('datedebut').value;
 		  var datfin = document.getElementById('datefin').value;
-		  console.log(listeselstation)
-		  console.log(pas)
-		  console.log(datdeb)
-		  if (listeselstation!==Array(nbstat*3)){ 
+		  if (idstat!==0){ 
 			  xhr.onload = function() {   // fonction callback
 				// récupération des données renvoyées par le serveur
 				var data = JSON.parse(this.responseText);
