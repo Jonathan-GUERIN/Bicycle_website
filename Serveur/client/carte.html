@@ -52,9 +52,9 @@
 				<button onclick="Affichegraphe()">Afficher graphe</button>
 			</div>
 		</aside>
-		<div id="map"></div>  
-
-		<div id="graphe">
+		<div class="cartegraph">
+			<div id="map"></div>  
+			<div id="graphe"></div>
 		</div>
 	</section>
 </body>
@@ -132,10 +132,14 @@
 			  xhr.onload = function() {   // fonction callback
 				// récupération des données renvoyées par le serveur
 				var data = JSON.parse(this.responseText);
+				console.log(data)
 				// affichage du graphe
-				document.getElementById('graphe').innerHTML = '<img src=' +data.linkimg+' alt=courbe de disponibilité de '+data.alt+'></img>';
+				document.getElementById('graphe').innerHTML = document.getElementById('graphe').innerHTML +'<img src="images/graphes/' +data[0].linkimg+'" alt="courbe de disponibilité de '+data[1].alt+'""></img>';
 				//suppression des stations selectionnee
 				document.getElementById('selectstation').innerHTML = "";
+				listeselstation = [];
+				listeselstation.length = nbstat*3;
+				idstat = 0
 				};
 			  xhr.open('GET','/courbe?stations='+listeselstation.slice(0,idstat)+'&datedebut='+datdeb+'&datefin='+datfin+'&pas='+pas,true);  // requête avec une "query string"
 			  xhr.send();

@@ -26,7 +26,7 @@ class RequestHandler(http.server.SimpleHTTPRequestHandler):
     
     # liste des stations dans le chemin d'accès
     elif self.path_info[0] == "courbe":
-      self.send_courbe(self.params['stations'][0],self.params['pas'][0],self.params['datedebut'][0],self.params['datedebut'][0])
+      self.send_courbe(self.params['stations'][0],self.params['pas'][0],self.params['datedebut'][0],self.params['datefin'][0])
 
     # requête générique
     elif self.path_info[0] == "service":
@@ -63,18 +63,18 @@ class RequestHandler(http.server.SimpleHTTPRequestHandler):
     liststations = [stat for stat in liststations if not stat == '']
     strstation =''
     for station in liststations:
-        strstation = strstation + station
-        
-    c.execute("SELECT lien FROM cache WHERE stations ='"+strstation+"' AND pas = '"+pas+"' AND datedebut = '"+datdeb+"' AND datefin = '"+datfin+"';")
+        strstation = strstation + str(station)
+    print(strstation)    
+    c.execute("SELECT lien,alt FROM cache WHERE stations =\'"+strstation+"\' AND pas = '"+pas+"' AND datedebut = '"+datdeb[:13]+"' AND datefin = '"+datfin[:13]+"';")
     r = c.fetchall()
-    
+    print(r)
     if len(r) !=0:
-        link = r[0][0]
+        link,alt = r[0]
     else:
-        link = courbes.creationcourbe(datdeb,datfin,liststations,pas)
-        c.execute('INSERT INTO cache (stations, datedebut, datefin, pas, lien) VALUES ("'+str(strstation)+'","'+str(datdeb)+'","'+str(datfin)+'","'+str(pas)+'","'+str(link)+'");')
-    
-    body = json.dumps({"linkimg": link},{"alt":stations})
+        link,alt = courbes.creationcourbe(datdeb,datfin,liststations,pas)
+        c.execute('INSERT INTO cache (stations, datedebut, datefin, pas, lien,alt) VALUES ("'+str(strstation)+'","'+str(datdeb[:13])+'","'+str(datfin[:13])+'","'+str(pas)+'","'+str(link)+'","'+str(alt)+'");')
+        conn.commit()
+    body = json.dumps([{"linkimg": link},{"alt":alt}])
     headers = [('Content-Type','application/json')]
     self.send(body,headers)
     
