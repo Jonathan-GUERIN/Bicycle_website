@@ -74,7 +74,7 @@ class RequestHandler(http.server.SimpleHTTPRequestHandler):
         link,alt = courbes.creationcourbe(datdeb,datfin,liststations,pas)
         c.execute('INSERT INTO cache (stations, datedebut, datefin, pas, lien,alt) VALUES ("'+str(strstation)+'","'+str(datdeb[:13])+'","'+str(datfin[:13])+'","'+str(pas)+'","'+str(link)+'","'+str(alt)+'");')
         conn.commit()
-    body = json.dumps([{"linkimg": link},{"alt":alt}])
+    body = json.dumps({"linkimg": link,"alt":alt})
     headers = [('Content-Type','application/json')]
     self.send(body,headers)
     

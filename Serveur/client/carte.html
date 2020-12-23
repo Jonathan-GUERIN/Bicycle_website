@@ -27,7 +27,7 @@
 				<h1>Disponibilité des vélo'v</h1>
 				<fieldset>
 					<p>Date de début :</p>
-					<input id='datedebut' type="datetime-local" value='2019-12-25T14:00'>
+					<input id='datedebut' type="datetime-local" value='2020-11-15T04:00'>
 					<p>Date de fin : </p>
 					<input id='datefin' type="datetime-local">
 					<script>
@@ -134,7 +134,7 @@
 				var data = JSON.parse(this.responseText);
 				console.log(data)
 				// affichage du graphe
-				document.getElementById('graphe').innerHTML = document.getElementById('graphe').innerHTML +'<img src="images/graphes/' +data[0].linkimg+'" alt="courbe de disponibilité de '+data[1].alt+'""></img>';
+				document.getElementById('graphe').innerHTML = document.getElementById('graphe').innerHTML +'<img src="images/graphes/' +data.linkimg+'" alt="courbe de disponibilité de '+data.alt+'""></img>';
 				//suppression des stations selectionnee
 				document.getElementById('selectstation').innerHTML = "";
 				listeselstation = [];
