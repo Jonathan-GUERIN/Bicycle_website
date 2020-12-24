@@ -31,14 +31,16 @@ def creationcourbe(date_deb,date_fin,stations,pas):
     for i in range(len(idstation)):
         c.execute("SELECT time_ISO,bikes FROM historique WHERE velov_number='velov-"+str(idstation[i][0])+"' AND time_ISO > '"+d+"' and time_ISO<'"+f+"' ORDER BY time_ISO;")
         requete = c.fetchall()
+        print(requete)
 
-        x = [pltd.date2num(dt.datetime(int(a[0][:4]),int(a[0][5:7]),int(a[0][8:10]),int(a[0][11:13]),1)) for a in requete if not a[1] == ''] 
+        x = [pltd.date2num(dt.datetime(int(a[0][:4]),int(a[0][5:7]),int(a[0][8:10]),int(a[0][11:13]),int(a[0][14:16]),1)) for a in requete if not a[1] == ''] 
         y = [float(a[1]/idstation[i][2])*100 for a in requete if not a[1] == '']
         
         x_pas=[x[Dict[pas]*i] for i in range(int(len(x)//Dict[pas]))]
         
         y_pas=[y[Dict[pas]*i] for i in range(int(len(y)//Dict[pas]))]
-        
+        print(x)
+        print(y_pas)
         plt.plot_date(x_pas,y_pas,linestyle='dashed',label=idstation[i][1])
 
 
@@ -53,6 +55,9 @@ def creationcourbe(date_deb,date_fin,stations,pas):
 
     plt.grid()
     plt.legend()
+    
+    plt.xlim(x_pas[0],x_pas[len(x_pas)-1])
+    
     plt.ylabel("Taux de disponibilité")
     plt.xlabel("Date")
     plt.title("Taux de disponibilité des vélo'v")
@@ -65,7 +70,7 @@ def creationcourbe(date_deb,date_fin,stations,pas):
     
     return string,alt
 
-creationcourbe('2020-11-15T04:00:00','2020-11-16T04:00:00',['CROUS'],'5 minutes')
+creationcourbe('2020-11-15T04:00:00','2020-11-16T05:00:00',['CROUS','Gailleton'],'5 minutes')
 
 
 
