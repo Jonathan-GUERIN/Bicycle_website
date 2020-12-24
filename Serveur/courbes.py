@@ -8,9 +8,9 @@ c = conn.cursor()
 
 
 # l'utilisateur détermine la date de debut et la date de fin de la courbe 
-# ainsi que les stations concernées(par des cases à cocher par exemple) 
+# ainsi que les stations concernées
 # et le pas ( 5 mins par défaut ) multiple de 5 mins
-# station := une liste des id des stations
+# station := une liste des noms des stations
 
 
 def creationcourbe(date_deb,date_fin,stations,pas):
@@ -19,6 +19,7 @@ def creationcourbe(date_deb,date_fin,stations,pas):
     d=date_deb +'+00:00'
     f=date_fin +'+00:00'
 
+    Dict={'5 minutes':1, '30 minutes': 6,'1 heure': 12, '1 jour': 288 }    
 
     idstation = []
     for station in stations:
@@ -34,7 +35,11 @@ def creationcourbe(date_deb,date_fin,stations,pas):
         x = [pltd.date2num(dt.datetime(int(a[0][:4]),int(a[0][5:7]),int(a[0][8:10]),int(a[0][11:13]),1)) for a in requete if not a[1] == ''] 
         y = [float(a[1]/idstation[i][2])*100 for a in requete if not a[1] == '']
         
-        plt.plot_date(x,y,linestyle='dashed',label=idstation[i][1])
+        x_pas=[x[Dict[pas]*i] for i in range(int(len(x)//Dict[pas]))]
+        
+        y_pas=[y[Dict[pas]*i] for i in range(int(len(y)//Dict[pas]))]
+        
+        plt.plot_date(x_pas,y_pas,linestyle='dashed',label=idstation[i][1])
 
 
     alt = '_'.join([str(s) for s in stations])
@@ -51,12 +56,16 @@ def creationcourbe(date_deb,date_fin,stations,pas):
     plt.ylabel("Taux de disponibilité")
     plt.xlabel("Date")
     plt.title("Taux de disponibilité des vélo'v")
+    plt.show()
+    
     string= date_deb[:13]+date_fin[:13]+pas
     string=string + stations
     string = string +'.jpg'
-    plt.savefig('client/images/graphes/'+string)
+    # plt.savefig('client/images/graphes/'+string)
     
     return string,alt
+
+creationcourbe('2020-11-15T04:00:00','2020-11-16T04:00:00',['CROUS'],'5 minutes')
 
 
 
