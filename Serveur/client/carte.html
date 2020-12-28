@@ -49,6 +49,7 @@
 				</fieldset>
 
 				<h3>Stations sélectionnées</h3>
+				<p id="aideselstat">Cliquez sur une icône pour la sélectionner</p>
 				<p id="erreurstat">Vous devez sélectionner au moins une station</p>
 				<p id="selectstation"></p>
 				<button onclick="Affichegraphe()">Afficher graphe</button>
@@ -108,12 +109,14 @@
 	
 	
 	function OnMarkerClick(e) {
+		document.getElementById('aideselstat').style.display = "none"; // invisibilise l'aide
 		if (listeselstation.indexOf(e.target.nstat) === -1) {
 			// sattion pas deja selectionnee
 			listeselstation[idstat] = e.target.nstat; // ajout station dans list
 			var legende = document.getElementById('selectstation'); // affichage de la station selectionnee
 			legende.innerHTML += '<span id=station'+idstat+'>'+e.target.nstat+'<br></span>';
 			document.getElementById('erreurstat').style.display = "none"; // invisibilise l'erreur de pas de station selectionnee
+			
 			idstat+=1;
 			e.target.setIcon(selected)
 		} else {

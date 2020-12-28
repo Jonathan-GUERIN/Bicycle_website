@@ -162,6 +162,11 @@ aside button{
 	display:none;
 }
 
+#aideselstat{
+	color:grey;
+	display:inline;
+}
+
 #selectstation{
 	max-height:200px;
 	overflow-y:scroll;
