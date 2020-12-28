@@ -147,9 +147,10 @@ aside button{
 	width:20%;
 	position: fixed;
 	background-color: #272727;
+	z-index:7000;
 }
 
-.recherche p{
+.recherche fieldset p{
 	margin-block-end: 0;
 }
 
@@ -165,6 +166,7 @@ aside button{
 #aideselstat{
 	color:grey;
 	display:inline;
+	margin-block-start: 0;
 }
 
 #selectstation{
