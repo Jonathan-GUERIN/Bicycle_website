@@ -72,22 +72,31 @@ button:hover{
 	padding: 75px 0;
 	height:200px;
 	text-align: center;
-	text-shadow: 2px 2px 4px black;
+	text-shadow: 0.3em 0em 0.2em black;
 	letter-spacing: 2px;
 	font-weight: 10;
 }
 
 .titre h2{
-    padding: 0em 18em 6em;
+    	padding: 0em 10em 6em;
+}
+
+.titresection1{
+	font-size:50px;
 }
 
 .titreoffre{
 	display: flex;
-    flex-direction: column;
-    margin-left: 70%;
-	text-shadow: 2px 2px 4px black;
+    	flex-direction: column;
+    	margin-left: 70%;
+	text-shadow: 0.3em 0em 0.2em black;
 	letter-spacing: 2px;
 	font-weight: 10;
+	text-align:center;
+}
+
+.titresection2{
+	font-size:30px;
 }
 
 .abonnements{
@@ -119,7 +128,13 @@ button:hover{
 .details{
 	font-size: 1vw;
 	margin:15px;
+	white-space:nowrap;
 }
+
+.prix{
+	font-size:40px;
+}
+
 
 
 /* Carte */
