@@ -118,21 +118,24 @@ button:hover{
 }
 
 .nom{
-    color: grey;
+    	color: grey;
+	font-size:100%;
 }
 
 .programme{
-	margin: 0em 0em 5em 0em;
+	margin: 0em 0em 3em 0em;
+	font-size:150%;
+	text-shadow:0em 0em 0.1em black;
 }
 
 .details{
-	font-size: 1vw;
+	font-size: 120%;
 	margin:15px;
-	white-space:nowrap;
+	text-align:center;
 }
 
 .prix{
-	font-size:40px;
+	font-size:160%;
 }
 
 
