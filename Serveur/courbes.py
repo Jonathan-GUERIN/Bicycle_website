@@ -13,12 +13,30 @@ c = conn.cursor()
 # station := une liste des noms des stations
 
 
-def creationcourbe(date_deb,date_fin,stations,pas):
+def creationcourbe(date_deb,date_fin,stats,pas):
     
     plt.figure(figsize=(18,4))
     d=date_deb +'+00:00'
     f=date_fin +'+00:00'
     pas = int(pas) // 5
+    
+    arrs=['VILLEURBANNE','Lyon 7 ème','Lyon 8 ème','Lyon 6 ème','Lyon 5 ème','Lyon 4 ème','Lyon 3 ème','Lyon 9 ème','Lyon 2 ème','Lyon 1 er']
+    S=[]
+    for s in stats:
+        if s in arrs:
+            c.execute("SELECT nom FROM stations WHERE commune='"+str(s)+"'")
+            R=c.fetchall()
+            L=[elt[0] for elt in R ]
+            S=S+L
+        else:
+            S.append(s)
+            
+    stations=list(set(S))     #supprimer des éventuels doublons  
+    
+    
+    
+    
+    
     idstation = []
     for station in stations:
         
@@ -58,11 +76,11 @@ def creationcourbe(date_deb,date_fin,stations,pas):
     string= date_deb[:13]+date_fin[:13]+str(pas)
     string=string + stations
     string = string +'.jpg'
-    plt.savefig('client/images/graphes/'+string)
+    # plt.savefig('client/images/graphes/'+string)
     
     return string,alt
 
-#creationcourbe('2020-11-15T04:00:00','2020-11-16T05:00:00',['CROUS','Gailleton'],'5 minutes')
+creationcourbe('2020-11-15T04:00:00','2020-11-16T05:00:00',['Bayard / Rambaud','Perrache Est','Lyon 7 ème'],30)
 
 
 
