@@ -47,9 +47,14 @@ def creationcourbe(date_deb,date_fin,stats,pas):
 
         x = [pltd.date2num(dt.datetime(int(a[0][:4]),int(a[0][5:7]),int(a[0][8:10]),int(a[0][11:13]),int(a[0][14:16]),1)) for a in requete if not a[1] == ''] 
         y = [float(a[1]/idstation[i][2])*100 for a in requete if not a[1] == '']
-        
-        x_pas=[x[pas*i] for i in range(int(len(x)//pas))]
-        
+    
+    
+    ###################a faire ############################    
+    # test si pas d'historique dans la station
+    #######################################################
+       
+
+        x_pas=[x[pas*i] for i in range(int(len(x)//pas))] 
         y_pas=[y[pas*i] for i in range(int(len(y)//pas))]
         plt.plot_date(x_pas,y_pas,linestyle='dashed',label=idstation[i][1])
 
