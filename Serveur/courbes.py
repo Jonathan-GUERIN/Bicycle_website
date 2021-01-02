@@ -34,9 +34,6 @@ def creationcourbe(date_deb,date_fin,stats,pas):
     stations=list(set(S))     #supprimer des éventuels doublons  
     
     
-    
-    
-    
     idstation = []
     for station in stations:
         
@@ -76,11 +73,9 @@ def creationcourbe(date_deb,date_fin,stats,pas):
     string= date_deb[:13]+date_fin[:13]+str(pas)
     string=string + stations
     string = string +'.jpg'
-    # plt.savefig('client/images/graphes/'+string)
+    plt.savefig('client/images/graphes/'+string)
     
     return string,alt
-
-creationcourbe('2020-11-15T04:00:00','2020-11-16T05:00:00',['Bayard / Rambaud','Perrache Est','Lyon 7 ème'],30)
 
 
 
