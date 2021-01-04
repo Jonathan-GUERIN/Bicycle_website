@@ -41,8 +41,8 @@
 					<option value="5">5 minutes</option>
 					<option value="30">30 minutes</option>
 					<option value="60">1 heure</option>
-					<option value="120">2 heure</option>
-					<option value="720">12 heure</option>
+					<option value="120">2 heures</option>
+					<option value="720">12 heures</option>
 					<option value="1440">1 jour</option>
 				</select>
 
@@ -111,7 +111,7 @@
 	function OnMarkerClick(e) {
 		document.getElementById('aideselstat').style.display = "none"; // invisibilise l'aide
 		if (listeselstation.indexOf(e.target.nstat) === -1) {
-			// sattion pas deja selectionnee
+			// station pas deja selectionnee
 			listeselstation[idstat] = e.target.nstat; // ajout station dans list
 			var legende = document.getElementById('selectstation'); // affichage de la station selectionnee
 			legende.innerHTML += '<span id=station'+idstat+'>'+e.target.nstat+'<br></span>';
