@@ -55,9 +55,16 @@ def creationcourbe(date_deb,date_fin,stats,pas):
         y_pas=[y[pas*i] for i in range(int(len(y)//pas))]
         plt.plot_date(x_pas,y_pas,linestyle='dashed',label=idstation[i][1])
 
+    
+    # c.execute("SELECT id from cache")
+    # req=c.fetchall()
+    # ids=[ e[0]for e in req ]
+    # id=max(ids)
+
+
     idstation.sort()
     
-    alt = '_'.join([str(s) for s in idstation])
+    alt = '_'.join([str(s) for s in stations])
 
     #nettoyage chane pour eviter bug d'enregistrement
     string = alt.split(' ')
