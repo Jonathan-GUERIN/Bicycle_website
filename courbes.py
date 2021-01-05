@@ -62,9 +62,7 @@ def creationcourbe(date_deb,date_fin,stats,pas):
     # req=c.fetchall()
     # ids=[ e[0]for e in req ]
     # id=max(ids)+1
-
-
-    idstation.sort()
+    id = 1
     
     alt = '_'.join([str(s) for s in stations])
 
