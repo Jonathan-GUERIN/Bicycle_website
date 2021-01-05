@@ -59,7 +59,7 @@ def creationcourbe(date_deb,date_fin,stats,pas):
     # c.execute("SELECT id from cache")
     # req=c.fetchall()
     # ids=[ e[0]for e in req ]
-    # id=max(ids)
+    # id=max(ids)+1
 
 
     idstation.sort()
