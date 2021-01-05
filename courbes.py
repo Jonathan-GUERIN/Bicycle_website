@@ -59,7 +59,7 @@ def creationcourbe(date_deb,date_fin,stats,pas):
     # c.execute("SELECT id from cache")
     # req=c.fetchall()
     # ids=[ e[0]for e in req ]
-    # id=max(ids)
+    # id=max(ids)+1
 
 
     idstation.sort()
@@ -67,11 +67,11 @@ def creationcourbe(date_deb,date_fin,stats,pas):
     alt = '_'.join([str(s) for s in stations])
 
     #nettoyage chane pour eviter bug d'enregistrement
-    string = alt.split(' ')
-    stations = ''.join([str(s) for s in string])
+    # string = alt.split(' ')
+    # stations = ''.join([str(s) for s in string])
 
-    string = stations.split('/')
-    stations = ''.join([str(s) for s in string])
+    # string = stations.split('/')
+    # stations = ''.join([str(s) for s in string])
 
     plt.grid()
     plt.legend()
@@ -80,18 +80,20 @@ def creationcourbe(date_deb,date_fin,stats,pas):
     plt.xlabel("Date")
     plt.title("Taux de disponibilité des vélo'v")
     
-    string = date_deb[:13]+date_fin[:13]+str(pas)
-    string = string + stations
-    string = string +'.jpg'
-    plt.savefig('client/images/graphes/'+string)
+    # string = date_deb[:13]+date_fin[:13]+str(pas)
+    # string = string + stations
+    # string = string +'.jpg'
+    link=str(id)+'.jpg'
+    plt.savefig('client/images/graphes/'+link)
     
 
-    ##############################A faire ###############################################
-    #c.execute('INSERT INTO cache (stations, datedebut, datefin, pas, lien,alt) VALUES ("'+str(strstation)+'","'+str(datdeb[:13])+'","'+str(datfin[:13])+'","'+str(pas)+'","'+str(link)+'","'+str(alt)+'");')
-    #conn.commit()
+
+    
+    c.execute('INSERT INTO cache (stations, datedebut, datefin, pas, lien,alt,id) VALUES ("'+str(strstation)+'","'+str(date_deb[:13])+'","'+str(date_fin[:13])+'","'+str(pas)+'","'+str(link)+'","'+str(alt)+'","'+str(id)+'");')
+    conn.commit()
 
 
-    return string,alt
+    return link,alt
 
 
 
