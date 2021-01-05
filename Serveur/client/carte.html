@@ -32,8 +32,7 @@
 					<input id='datefin' type="datetime-local">
 					<script>
 						var now = new Date();
-						var mois = now.getMonth() + 1
-						var date = now.getFullYear()+'-'+mois+'-'+now.getDate()+'T'+now.getHours()+':'+now.getMinutes();
+						var date = now.getFullYear()+'-'+('0' + (now.getMonth()+1)).slice(-2)+'-'+('0' + now.getDate()).slice(-2)+'T'+('0'+now.getHours()).slice(-2)+':'+('0'+now.getMinutes()).slice(-2);
 						document.getElementById('datefin').setAttribute('value',date);
 					</script>
 				<p>Pas du graphique</p>
