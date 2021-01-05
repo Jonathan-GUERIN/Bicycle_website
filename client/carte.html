@@ -51,7 +51,7 @@
 				<p id="aideselstat">Cliquez sur une icône pour la sélectionner</p>
 				<p id="erreurstat">Vous devez sélectionner au moins une station</p>
 				<p id="selectstation"></p>
-				<button onclick="Affichegraphe()"><a href='#graph'>Afficher graphe</a></button>
+				<button onclick="Affichegraphe()">Afficher graphe</button>
 			</div>
 		</aside>
 		<div class="cartegraph">
@@ -88,6 +88,7 @@
 	
 	var listeselstation = []
 	var idstat = 0
+	var nbgraphe = 0
 	function load_data () {
 		var xhr = new XMLHttpRequest();
 		xhr.onload = function() {   // fonction callback
@@ -136,7 +137,8 @@
 				var data = JSON.parse(this.responseText);
 				console.log(data)
 				// affichage du graphe
-				document.getElementById('graphe').innerHTML = document.getElementById('graphe').innerHTML +'<img src="images/graphes/' +data.linkimg+'" alt="courbe de disponibilité de '+data.alt+'""></img>';
+				nbgraphe += 1;
+				document.getElementById('graphe').innerHTML = document.getElementById('graphe').innerHTML +'<img id="graphe'+nbgraphe+'"src="images/graphes/' +data.linkimg+'" alt="courbe de disponibilité de '+data.alt+'""></img>';
 				
 				//reinitilise le js
 				document.getElementById('selectstation').innerHTML = "";
@@ -147,6 +149,7 @@
 				};
 			  xhr.open('GET','/courbe?stations='+listeselstation.slice(0,idstat)+'&datedebut='+datdeb+'&datefin='+datfin+'&pas='+pas,true);  // requête avec une "query string"
 			  xhr.send();
+			  setTimeout(() => { window.scrollTo(0,document.body.scrollHeight); }, 500);
 			} else {
 				document.getElementById('erreurstat').style.display = "inline";
 			}
