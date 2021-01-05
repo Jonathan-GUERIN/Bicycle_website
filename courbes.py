@@ -19,6 +19,7 @@ def creationcourbe(date_deb,date_fin,stats,pas):
     d=date_deb +'+00:00'
     f=date_fin +'+00:00'
     pas = int(pas) // 5
+    strstation =''
     
     arrs=['VILLEURBANNE','Lyon 7 ème','Lyon 8 ème','Lyon 6 ème','Lyon 5 ème','Lyon 4 ème','Lyon 3 ème','Lyon 9 ème','Lyon 2 ème','Lyon 1 er']
     S=[]
@@ -40,6 +41,7 @@ def creationcourbe(date_deb,date_fin,stats,pas):
         c.execute("SELECT DISTINCT idstation,nbbornette FROM stations WHERE nom = '"+str(station)+"';")
         requete = c.fetchall()
         idstation.append((requete[0][0],station,requete[0][1]))
+        strstation = strstation + str(station)
 
     for i in range(len(idstation)):
         c.execute("SELECT time_ISO,bikes FROM historique WHERE velov_number='velov-"+str(idstation[i][0])+"' AND time_ISO > '"+d+"' and time_ISO<'"+f+"' ORDER BY time_ISO;")
