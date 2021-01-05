@@ -61,20 +61,17 @@ class RequestHandler(http.server.SimpleHTTPRequestHandler):
     liststations = stations.split(',')
     liststations.sort()
     liststations = [stat for stat in liststations if not stat == '']
-    strstation =''
-    for station in liststations:
-        strstation = strstation + str(station)
+  
+#    c.execute("SELECT lien,alt FROM cache WHERE stations =\'"+strstation+"\' AND pas = '"+pas+"' AND datedebut = '"+datdeb[:13]+"' AND datefin = '"+datfin[:13]+"';")
+#    r = c.fetchall()
+#    print(r)
+#    if len(r) !=0:
+#        link,alt = r[0]
+#    else:
+#        print(datdeb,datfin,liststations,pas)
+#        link,alt = courbes.creationcourbe(datdeb,datfin,liststations,pas)
 
-    c.execute("SELECT lien,alt FROM cache WHERE stations =\'"+strstation+"\' AND pas = '"+pas+"' AND datedebut = '"+datdeb[:13]+"' AND datefin = '"+datfin[:13]+"';")
-    r = c.fetchall()
-    print(r)
-    if len(r) !=0:
-        link,alt = r[0]
-    else:
-        print(datdeb,datfin,liststations,pas)
-        link,alt = courbes.creationcourbe(datdeb,datfin,liststations,pas)
-        c.execute('INSERT INTO cache (stations, datedebut, datefin, pas, lien,alt) VALUES ("'+str(strstation)+'","'+str(datdeb[:13])+'","'+str(datfin[:13])+'","'+str(pas)+'","'+str(link)+'","'+str(alt)+'");')
-        conn.commit()
+    link,alt = courbes.creationcourbe(datdeb,datfin,liststations,pas)
     body = json.dumps({"linkimg": link,"alt":alt})
     headers = [('Content-Type','application/json')]
     self.send(body,headers)
@@ -151,6 +148,25 @@ class RequestHandler(http.server.SimpleHTTPRequestHandler):
     print('body =',length,ctype,self.body)
     print('params =', self.params)
 
+def initpopup():
+      
+  liststations = stations.split(',')
+  liststations.sort()
+  liststations = [stat for stat in liststations if not stat == '']
+  strstation =''
+  for station in liststations:
+      strstation = strstation + str(station)
+
+  c.execute("SELECT lien,alt FROM cache WHERE stations =\'"+strstation+"\' AND pas = '"+pas+"' AND datedebut = '"+datdeb[:13]+"' AND datefin = '"+datfin[:13]+"';")
+  r = c.fetchall()
+  print(r)
+  if len(r) !=0:
+      link,alt = r[0]
+  else:
+      print(datdeb,datfin,liststations,pas)
+      link,alt = courbes.creationcourbe(datdeb,datfin,liststations,pas)
+      c.execute('INSERT INTO cache (stations, datedebut, datefin, pas, lien,alt) VALUES ("'+str(strstation)+'","'+str(datdeb[:13])+'","'+str(datfin[:13])+'","'+str(pas)+'","'+str(link)+'","'+str(alt)+'");')
+      conn.commit()
 
 # instanciation et lancement du serveur
 print('Le serveur est lancé sur le port : ' + str(port))

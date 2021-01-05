@@ -47,12 +47,7 @@ def creationcourbe(date_deb,date_fin,stats,pas):
 
         x = [pltd.date2num(dt.datetime(int(a[0][:4]),int(a[0][5:7]),int(a[0][8:10]),int(a[0][11:13]),int(a[0][14:16]),1)) for a in requete if not a[1] == ''] 
         y = [float(a[1]/idstation[i][2])*100 for a in requete if not a[1] == '']
-    
-    
-    ###################a faire ############################    
-    # test si pas d'historique dans la station
-    #######################################################
-       
+ 
 
         x_pas=[x[pas*i] for i in range(int(len(x)//pas))] 
         y_pas=[y[pas*i] for i in range(int(len(y)//pas))]
@@ -76,13 +71,17 @@ def creationcourbe(date_deb,date_fin,stats,pas):
     plt.xlabel("Date")
     plt.title("Taux de disponibilité des vélo'v")
     
-    string= date_deb[:13]+date_fin[:13]+str(pas)
-    string=string + stations
+    string = date_deb[:13]+date_fin[:13]+str(pas)
+    string = string + stations
     string = string +'.jpg'
     plt.savefig('client/images/graphes/'+string)
     
-    c.execute('INSERT INTO cache (stations, datedebut, datefin, pas, lien,alt) VALUES ("'+str(strstation)+'","'+str(datdeb[:13])+'","'+str(datfin[:13])+'","'+str(pas)+'","'+str(link)+'","'+str(alt)+'");')
-    conn.commit()
+
+    ##############################A faire ###############################################
+    #c.execute('INSERT INTO cache (stations, datedebut, datefin, pas, lien,alt) VALUES ("'+str(strstation)+'","'+str(datdeb[:13])+'","'+str(datfin[:13])+'","'+str(pas)+'","'+str(link)+'","'+str(alt)+'");')
+    #conn.commit()
+
+
     return string,alt
 
 
