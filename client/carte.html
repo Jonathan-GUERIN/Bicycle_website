@@ -17,7 +17,7 @@
 		<img src=images/logo_velov.png>
 		<nav>
 			<button type="button" onclick="window.location.href = 'index.html';"> Accueil </button>
-			<button type="button" onclick="window.location.href = 'carte.html';"> Carte </button>
+			<a href="#top"><button type="button"> Carte </button></a>
 		</nav>
 		<img src=images/logo_metropole.png>
 	</header>
@@ -51,7 +51,7 @@
 				<p id="aideselstat">Cliquez sur une icône pour la sélectionner</p>
 				<p id="erreurstat">Vous devez sélectionner au moins une station</p>
 				<p id="selectstation"></p>
-				<button onclick="Affichegraphe()">Afficher graphe</button>
+				<button onclick="Affichegraphe()"><a href='#graph'>Afficher graphe</a></button>
 			</div>
 		</aside>
 		<div class="cartegraph">
@@ -98,30 +98,12 @@
 			listeselstation.length = nbstat*3;
 			for ( n = 0; n < nbstat; n++ ) {
 				// insertion d'un marqueur à la position, attachement d'une popup, capture de l'évènement "clic', ajout nom de la station
-				L.marker([data[n].lat,data[n].lon],{icon: unselected}).addTo(map).addEventListener('click',OnMarkerClick).bindPopup(data[n].nom + initpopup(data[n].nom)).nstat=data[n].nom;
+				L.marker([data[n].lat,data[n].lon],{icon: unselected}).addTo(map).addEventListener('click',OnMarkerClick).bindPopup(data[n].nom).nstat=data[n].nom;
 				}
 			};
 		
 		xhr.open('GET','/stations',true);
 		xhr.send();
-	}
-
-	function initpopup (nomstat) {
-		var xhr = new XMLHttpRequest(); 
-		  var pas = document.getElementById('pas').options[document.getElementById('pas').selectedIndex].value;
-		  var datdeb = document.getElementById('datedebut').value;
-		  var datfin = document.getElementById('datefin').value;
-		  var linkimg = '';
-		  var alt = '';
-			xhr.onload = function() {   // fonction callback
-			// récupération des données renvoyées par le serveur
-			var data = JSON.parse(this.responseText);			
-			xhr.open('GET','/courbe?stations='+nomstat+'&datedebut='+datdeb+'&datefin='+datfin+'&pas='+pas,true);  // requête avec une "query string"
-			xhr.send();
-			linkimg = data.linkimg;
-			alt = data.alt;
-		}
-	return ('<img src="images/graphes/' +linkimg+'" alt="courbe de disponibilité de '+alt+'""></img>')
 	}
 	
 	function OnMarkerClick(e) {
