@@ -81,6 +81,8 @@ def creationcourbe(date_deb,date_fin,stats,pas):
     string = string +'.jpg'
     plt.savefig('client/images/graphes/'+string)
     
+    c.execute('INSERT INTO cache (stations, datedebut, datefin, pas, lien,alt) VALUES ("'+str(strstation)+'","'+str(datdeb[:13])+'","'+str(datfin[:13])+'","'+str(pas)+'","'+str(link)+'","'+str(alt)+'");')
+    conn.commit()
     return string,alt
 
 
