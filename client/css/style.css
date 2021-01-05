@@ -1,6 +1,6 @@
 ﻿/* commun */
 body {
-	font-family: 'Arial Black', Gadget, sans-serif;
+	font-family: 'Raleway Regular', sans-serif;
 	margin: 0;
 	color: white;
 }
@@ -40,7 +40,7 @@ button{
 	padding:1em 2em;
 	border-radius:10px;
 	background-color:red;
-	font:bold 13px Arial;
+	font-weight:bold;
 	margin: 0 60px;
     transition: all 0.2s ease-in;
     -webkit-transition: all 0.2s ease-in;
@@ -87,9 +87,9 @@ button:hover{
 
 .titreoffre{
 	display: flex;
-    	flex-direction: column;
-    	margin-left: 70%;
+	flex-direction: column;
 	text-shadow: 0.3em 0em 0.2em black;
+    margin-left: 70%;
 	letter-spacing: 2px;
 	font-weight: 10;
 	text-align:center;
@@ -114,18 +114,16 @@ button:hover{
 	width:20%;
     height:25em;
     text-align: center;
-	font-family: 'Alice', Gadget, sans-sherif;
 }
 
 .nom{
-    	color: grey;
+    color: grey;
 	font-size:100%;
 }
 
 .programme{
 	margin: 0em 0em 3em 0em;
 	font-size:150%;
-	text-shadow:0em 0em 0.1em black;
 }
 
 .details{
