@@ -87,7 +87,7 @@ def creationcourbe(date_deb,date_fin,stats,pas):
     
 
     ##############################A faire ###############################################
-    #c.execute('INSERT INTO cache (stations, datedebut, datefin, pas, lien,alt) VALUES ("'+str(strstation)+'","'+str(datdeb[:13])+'","'+str(datfin[:13])+'","'+str(pas)+'","'+str(link)+'","'+str(alt)+'");')
+    #c.execute('INSERT INTO cache (stations, datedebut, datefin, pas, lien,alt,id) VALUES ("'+str(strstation)+'","'+str(datdeb[:13])+'","'+str(datfin[:13])+'","'+str(pas)+'","'+str(link)+'","'+str(alt)+'","'+str(id)+'");')
     #conn.commit()
 
 
