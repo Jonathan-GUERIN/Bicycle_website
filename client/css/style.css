@@ -1,6 +1,6 @@
 ﻿/* commun */
 body {
-	font-family: 'Raleway Regular', sans-serif;
+	font-family: 'Arial Black', Gadget, sans-serif;
 	margin: 0;
 	color: white;
 }
@@ -23,7 +23,7 @@ body {
 	display:flex;
 	justify-content:space-between;
 	width:80%;
-	height:7em;
+	height:90px;
 	min-height:50px;
 	z-index:7000;
 }
@@ -40,8 +40,8 @@ button{
 	padding:1em 2em;
 	border-radius:10px;
 	background-color:red;
-	font-weight:bold;
-	margin: 0 8em;
+	font:bold 13px Arial;
+	margin: 0 60px;
     transition: all 0.2s ease-in;
     -webkit-transition: all 0.2s ease-in;
 }	
@@ -53,6 +53,29 @@ button:hover{
     transform: translate(0px,2px);
     -webkit-transform: translate(0px,2px);
     border-bottom: 1px solid;
+}
+
+/* Bas de page */
+
+.footer {
+  	position:fixed;
+  	bottom:0;
+  	left:0;
+  	width:100%;
+  	height: 4%;
+  	background-color: white;
+}
+
+.footer-content-right {
+  	padding-right:5px;
+  	margin-top:5px;
+  	float:right;
+}
+
+.icon-style {
+  	height:25px;
+	margin: 2px 2px 2px 2px;
+
 }
 
 
@@ -87,9 +110,9 @@ button:hover{
 
 .titreoffre{
 	display: flex;
-	flex-direction: column;
+    	flex-direction: column;
+    	margin-left: 70%;
 	text-shadow: 0.3em 0em 0.2em black;
-    margin-left: 70%;
 	letter-spacing: 2px;
 	font-weight: 10;
 	text-align:center;
@@ -112,18 +135,20 @@ button:hover{
 	margin:1%;
     padding:2em;
 	width:20%;
-    min-height:25em;
+    height:25em;
     text-align: center;
+	font-family: 'Alice', Gadget, sans-sherif;
 }
 
 .nom{
-    color: grey;
+    	color: grey;
 	font-size:100%;
 }
 
 .programme{
 	margin: 0em 0em 3em 0em;
 	font-size:150%;
+	text-shadow:0em 0em 0.1em black;
 }
 
 .details{
@@ -141,7 +166,7 @@ button:hover{
 /* Carte */
 .cartestation{
 	background-color:white;
-	margin-top:7em;
+	margin-top:100px;
 	width:100%;
 	display:flex;
 }
@@ -150,11 +175,11 @@ button:hover{
 aside{
 	width:22%;
 	background-color:#272727; 
-	height:120em;
+	height:1200px;
 }
 
 aside button{
-	margin: 1em auto;
+	margin: 5px auto;
 	width:100%;
 }
 
