@@ -56,6 +56,28 @@ button:hover{
     border-bottom: 1px solid;
 }
 
+/* Bas de page */
+
+.footer {
+	position:fixed;
+	bottom:0;
+	left:0;
+	width:100%;
+	height: 4%;
+	background-color: white;
+}
+
+.footer-content-right {
+	padding-right:5px;
+	margin-top:5px;
+	float:right;
+}
+
+.icon-style {
+	height:25px;
+  margin: 2px 2px 2px 2px;
+
+}
 
 /* Accueil */
 
