@@ -5,11 +5,11 @@ Audrey : CSS
 
 Agathe : HTML
 
-Python : Mohamed Khalil
+Mohamed Khalil : Python
 
-Gestion serveur : Nicolas
+Nicolas : Placement icone / arrondissement
 
-Interaction serveur : Arthur
+Arthur : Javascript / Interaction des différents pôles
 
 
 Template 

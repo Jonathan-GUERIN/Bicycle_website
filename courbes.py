@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import sqlite3
 import matplotlib.pyplot as plt
 import datetime as dt
@@ -60,9 +62,7 @@ def creationcourbe(date_deb,date_fin,stats,pas):
     # req=c.fetchall()
     # ids=[ e[0]for e in req ]
     # id=max(ids)+1
-
-
-    idstation.sort()
+    id = 1
     
     alt = '_'.join([str(s) for s in stations])
 
@@ -83,14 +83,14 @@ def creationcourbe(date_deb,date_fin,stats,pas):
     # string = date_deb[:13]+date_fin[:13]+str(pas)
     # string = string + stations
     # string = string +'.jpg'
+    
     link=str(id)+'.jpg'
     plt.savefig('client/images/graphes/'+link)
     
 
 
-    
-    c.execute('INSERT INTO cache (stations, datedebut, datefin, pas, lien,alt,id) VALUES ("'+str(strstation)+'","'+str(date_deb[:13])+'","'+str(date_fin[:13])+'","'+str(pas)+'","'+str(link)+'","'+str(alt)+'","'+str(id)+'");')
-    conn.commit()
+    # c.execute('INSERT INTO cache (stations, datedebut, datefin, pas, lien,alt,id) VALUES ("'+str(strstation)+'","'+str(date_deb[:13])+'","'+str(date_fin[:13])+'","'+str(pas)+'","'+str(link)+'","'+str(alt)+'","'+str(id)+'");')
+    # conn.commit()
 
 
     return link,alt
