@@ -6,11 +6,12 @@ body {
 }
 
 .nav img:first-child{
-	height: 96px;
+	height: 120%;
+	margin:auto -4em;
 }
 
 .nav img:last-child{
-	height:40px;
+	height: 100%;
 	margin:auto -4em;
 }
 
@@ -18,13 +19,13 @@ body {
 	background-color:white;
 	position:fixed;
 	top: 0;
-	border-bottom: 3px solid rgba(255,255,255,0.6);
-	padding: 5px 10%;
+	border-bottom: 1.5em solid rgba(255,255,255,0.6);
+	padding: 0.5% 10%;
 	display:flex;
 	justify-content:space-between;
 	width:80%;
-	height:7em;
-	min-height:50px;
+	height:10%;
+	min-height:10%;
 	z-index:7000;
 }
 
@@ -89,7 +90,7 @@ button:hover{
 	display: flex;
 	flex-direction: column;
 	text-shadow: 0.3em 0em 0.2em black;
-    margin-left: 70%;
+	margin-left: 70%;
 	letter-spacing: 2px;
 	font-weight: 10;
 	text-align:center;
@@ -150,7 +151,6 @@ button:hover{
 aside{
 	width:22%;
 	background-color:#272727; 
-	height:120em;
 }
 
 aside button{
@@ -199,7 +199,7 @@ aside button{
 
 #map { 
 	width: 100%;
-	height:620px;
+	height: 620px;
 }
 
 #graphe img {
