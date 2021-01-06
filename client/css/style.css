@@ -23,7 +23,7 @@ body {
 	display:flex;
 	justify-content:space-between;
 	width:80%;
-	height:90px;
+	height:7em;
 	min-height:50px;
 	z-index:7000;
 }
@@ -41,7 +41,7 @@ button{
 	border-radius:10px;
 	background-color:red;
 	font-weight:bold;
-	margin: 0 60px;
+	margin: 0 8em;
     transition: all 0.2s ease-in;
     -webkit-transition: all 0.2s ease-in;
 }	
@@ -112,7 +112,7 @@ button:hover{
 	margin:1%;
     padding:2em;
 	width:20%;
-    height:25em;
+    min-height:25em;
     text-align: center;
 }
 
@@ -141,7 +141,7 @@ button:hover{
 /* Carte */
 .cartestation{
 	background-color:white;
-	margin-top:100px;
+	margin-top:7em;
 	width:100%;
 	display:flex;
 }
@@ -150,11 +150,11 @@ button:hover{
 aside{
 	width:22%;
 	background-color:#272727; 
-	height:1200px;
+	height:120em;
 }
 
 aside button{
-	margin: 5px auto;
+	margin: 1em auto;
 	width:100%;
 }
 
