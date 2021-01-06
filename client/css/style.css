@@ -7,12 +7,12 @@ body {
 
 .nav img:first-child{
 	height: 120%;
-	margin:auto -4em;
+	margin:0.3em -4em;
 }
 
 .nav img:last-child{
 	height: 100%;
-	margin:auto -4em;
+	margin:1em -4em;
 }
 
 .nav{
@@ -39,10 +39,10 @@ button{
 	border-color: red;
 	text-transform: uppercase;
 	padding:1em 2em;
-	border-radius:10px;
+	border-radius:5%;
 	background-color:red;
 	font-weight:bold;
-	margin: 0 8em;
+	margin: 1em 8em;
     transition: all 0.2s ease-in;
     -webkit-transition: all 0.2s ease-in;
 }	
