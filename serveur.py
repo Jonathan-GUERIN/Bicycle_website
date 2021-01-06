@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import http.server
 import socketserver
 from urllib.parse import urlparse, parse_qs, unquote
