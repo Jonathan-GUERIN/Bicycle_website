@@ -132,11 +132,11 @@ button:hover{
     border-radius:12px 12px 12px 12px;
 	position: relative;
    	background-color: white;
-	margin:1%;
-    padding:2em;
+	margin:1% 1% 5% 1%;
+    	padding:2em;
 	width:20%;
-    height:25em;
-    text-align: center;
+    	height:25em;
+    	text-align: center;
 	font-family: 'Alice', Gadget, sans-sherif;
 }
 
@@ -146,14 +146,14 @@ button:hover{
 }
 
 .programme{
-	margin: 0em 0em 3em 0em;
+	margin: 0em 0em 1em 0em;
 	font-size:150%;
 	text-shadow:0em 0em 0.1em black;
 }
 
 .details{
 	font-size: 120%;
-	margin:15px;
+	margin:5px;
 	text-align:center;
 }
 
