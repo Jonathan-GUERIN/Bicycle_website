@@ -5,44 +5,46 @@ body {
 	color: white;
 }
 
+.nav img{
+	margin: auto 0;
+}
+
 .nav img:first-child{
-	height: 120%;
-	margin:0.3em -4em;
+	height: 70px;
 }
 
 .nav img:last-child{
-	height: 100%;
-	margin:1em -4em;
+	height: 50px;
 }
 
 .nav{
 	background-color:white;
 	position:fixed;
 	top: 0;
-	border-bottom: 1.5em solid rgba(255,255,255,0.6);
-	padding: 0.5% 10%;
+	padding: 5px 10%;
 	display:flex;
 	justify-content:space-between;
 	width:80%;
-	height:10%;
-	min-height:10%;
+	height:90px;
 	z-index:7000;
 }
 
 
 nav{
-	margin:auto 0;
+    margin: auto 0;
+    width: 100%;
+    text-align: center;
 }
 
 button{
 	color: white;
 	border-color: red;
 	text-transform: uppercase;
-	padding:1em 2em;
+	padding:15px 2em;
 	border-radius:5%;
 	background-color:red;
 	font-weight:bold;
-	margin: 1em 8em;
+	margin: 0 5%;
     transition: all 0.2s ease-in;
     -webkit-transition: all 0.2s ease-in;
 }	
@@ -63,7 +65,7 @@ button:hover{
 	background-image:url("../images/Image_arriere_plan_foncée.jpg");
 	background-attachment:fixed;
 	background-size:cover;
-	background-position: 10% 0;
+	background-position: center 90px;
 	background-repeat:no-repeat;
 	margin: 0;
 }
@@ -142,7 +144,7 @@ button:hover{
 /* Carte */
 .cartestation{
 	background-color:white;
-	margin-top:11%;
+	margin-top:100px;
 	width:100%;
 	display:flex;
 }
@@ -197,8 +199,7 @@ aside button{
 }
 
 
-#map { 
-	width: 90em;
+#map {
 	height: 620px;
 }
 
@@ -215,8 +216,6 @@ aside button{
 		width: 60%; 
 	}
 
-
-
 	aside{
 		width:40%;
 	}
@@ -227,6 +226,11 @@ aside button{
 	}
 }
 
+@media (max-width: 850px) {
+	.nav img:last-child{
+		display: none;
+	}
+}
 
 @media (max-width: 600px) {
 	
