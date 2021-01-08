@@ -14,14 +14,14 @@ body {
 }
 
 .nav img:last-child{
-	height: 50px;
+	width: 200px;
 }
 
 .nav{
 	background-color:white;
 	position:fixed;
 	top: 0;
-	padding: 5px 10%;
+	padding: 5px 7% 5px 13%;
 	display:flex;
 	justify-content:space-between;
 	width:80%;
