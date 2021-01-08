@@ -23,8 +23,31 @@ Nicolas :        Placement icone / arrondissement
 
 Arthur :         Javascript / Interaction des différents pôles
 
-organisation des fichiers
+
+
+
+Organisation des fichiers
 ==========
+Notre Dossier principale contient:
+- un Dossier "_client_" relatif à la partie HTML et CSS qui contient les pages web créées. 
+- un Dossier "_Données_" contenant la base de données.
+- un code "_serveur_" qui s'occupe du fonctionnement correct du serveur. 
+- un code "_courbe_" qui gère la base de données et trace les graphes à partir des paramètres choisis.
+
+Résultat final en captures d'écran
+==========
+
+
+
+
+
+Instrucuctiuons de lancement du site 
+==========
+Pour lancer l'application WEB, il faut:
+1. accéder au code serveur et le lancer 
+2. accéder au navigateur choisi et écrire l'adresse suivante :"**localhost:**'numero du port'"
+3. Dans la page "carte", l'utilisateur selectionne les stations sur la carte glissante ainsi que les paramètres et appuie sur "AFFICHER GRAPHE"
+
 
 
 
