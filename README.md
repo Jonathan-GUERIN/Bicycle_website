@@ -1,15 +1,31 @@
-Roles
+**Projet application Web: Disponibilité des Velo'V**
+===========
+Description générale
+==========
+Vélo’v est un réseau de vélos en libre-service sur Lyon.
+Le but de ce projet est de créer une application web qui permet aux utilisateurs de ce service de visualiser de manière simple et intuitive la disponibilité des velos dans les stations selectionnées sur une carte glissante. Le resultat sera affiché sur des graphes.
+L'utilisateur aura acces,en plus des stations/arrondissements sélectionnés, à un jeu de parametres à choisir:
+1. la date de début 
+2. la date de fin
+3. le pas de temps  
+
+
+Membres de l'équipe et distribution des roles
 ===========
 
-Audrey : CSS
+Audrey :         CSS
 
-Agathe : HTML
+Agathe :         HTML
 
-Mohamed Khalil : Python
+Mohamed Khalil : Python / tracage des courbes
 
-Nicolas : Placement icone / arrondissement
+Nicolas :        Placement icone / arrondissement
 
-Arthur : Javascript / Interaction des différents pôles
+Arthur :         Javascript / Interaction des différents pôles
+
+organisation des fichiers
+==========
+
 
 
 Template 
