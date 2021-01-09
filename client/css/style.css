@@ -121,15 +121,17 @@ button:hover{
 	display: flex;
    	color: black;
 	margin:15px;
+	flex-wrap: wrap;
 }
 
 #offre{
     border-radius:12px 12px 12px 12px;
 	position: relative;
    	background-color: white;
-	margin:1%;
-    padding:2em;
-	width:20%;
+    margin: 1%;
+    padding: 2%;
+	width: 19%;
+	min-width: 230px;
     min-height:25em;
     text-align: center;
 }
