@@ -120,7 +120,6 @@ button:hover{
 .abonnements{
 	display: flex;
    	color: black;
-	margin:15px;
 	flex-wrap: wrap;
 }
 
