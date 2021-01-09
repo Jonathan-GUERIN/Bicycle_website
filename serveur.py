@@ -101,9 +101,11 @@ class RequestHandler(http.server.SimpleHTTPRequestHandler):
 
     #renvoie tous les arrondissements
   def send_arrondissements(self):
-      c.execute("SELECT commune FROM stations")
-      s=c.fetchall()
-      print(s)
+      c.execute("SELECT DISTINCT commune FROM stations")
+      r=c.fetchall
+      headers = [('Content-Type','application/json')];
+      body = json.dumps([{'arrondissements':a} for a in r])
+      self.send(body,headers)
 
   # on envoie le document statique demandé
   def send_static(self):
