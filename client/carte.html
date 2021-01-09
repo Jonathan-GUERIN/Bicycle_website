@@ -35,27 +35,29 @@
 						var date = now.getFullYear()+'-'+('0' + (now.getMonth()+1)).slice(-2)+'-'+('0' + now.getDate()).slice(-2)+'T'+('0'+now.getHours()).slice(-2)+':'+('0'+now.getMinutes()).slice(-2);
 						document.getElementById('datefin').setAttribute('value',date);
 					</script>
-				<p>Pas du graphique</p>
-				<select id="pas">
-					<option value="5">5 minutes</option>
-					<option value="30">30 minutes</option>
-					<option value="60">1 heure</option>
-					<option value="120">2 heures</option>
-					<option value="720">12 heures</option>
-					<option value="1440">1 jour</option>
-				</select>
-
+					<p>Pas du graphique</p>
+					<select id="pas">
+						<option value="5">5 minutes</option>
+						<option value="30">30 minutes</option>
+						<option value="60">1 heure</option>
+						<option value="120">2 heures</option>
+						<option value="720">12 heures</option>
+						<option value="1440">1 jour</option>
+					</select>
 				</fieldset>
+				<button onclick="Affichegraphe()">Afficher graphe</button>
 
 				<h3>Stations sélectionnées</h3>
 				<p id="aideselstat">Cliquez sur une icône pour la sélectionner</p>
 				<p id="erreurstat">Vous devez sélectionner au moins une station</p>
 				<p id="selectstation"></p>
-				<button onclick="Affichegraphe()">Afficher graphe</button>
 			</div>
 		</aside>
 		<div class="cartegraph">
 			<div id="map"></div>  
+			<div id="arrondissements">
+
+			</div> 
 			<div id="graphe"></div>
 		</div>
 	</section>
@@ -113,6 +115,21 @@
 		
 		xhr.open('GET','/stations',true);
 		xhr.send();
+
+
+		var xhr = new XMLHttpRequest();
+		xhr.onload = function() {   // fonction callback
+			// récupération des données renvoyées par le serveur
+			var data = JSON.parse(this.responseText);
+			// boucle sur les arrondissement renvoyés
+			var arrond = document.getElementById('arrondissements'); // affichage de la station selectionnee
+			for ( n = 0; n < data.length; n++ ) {
+				arrond.innerHTML += '<button onclick="ajoutarrond('+data[n].arrondissement+')">'+data[n].arrondissement+'</button>';
+				}
+			};
+		
+		xhr.open('GET','/arrondissements',true);
+		xhr.send();
 	}
 	
 	function OnMarkerClick(e) {
@@ -134,6 +151,23 @@
 		}
 	}
 	
+	function ajoutarrond(e) {
+		document.getElementById('aideselstat').style.display = "none"; // invisibilise l'aide
+		if (listeselstation.indexOf(e) === -1) {
+			// station pas deja selectionnee
+			listeselstation[idstat] = e; // ajout station dans list
+			var legende = document.getElementById('selectstation'); // affichage de la station selectionnee
+			legende.innerHTML += '<span id=station'+idstat+'>'+e+'<br></span>';
+			document.getElementById('erreurstat').style.display = "none"; // invisibilise l'erreur de pas de station selectionnee
+			idstat+=1;
+		} else {
+			// station deja selectionnee
+			var i = listeselstation.indexOf(e)
+			listeselstation[i] = "";
+			document.getElementById('station'+i).remove();
+		}
+	}
+
 	function Affichegraphe () {
 		var xhr = new XMLHttpRequest(); 
 		  var pas = document.getElementById('pas').options[document.getElementById('pas').selectedIndex].value;
@@ -157,7 +191,7 @@
 				};
 			  xhr.open('GET','/courbe?stations='+listeselstation.slice(0,idstat)+'&datedebut='+datdeb+'&datefin='+datfin+'&pas='+pas,true);  // requête avec une "query string"
 			  xhr.send();
-			  setTimeout(() => { window.scrollTo(0,document.body.scrollHeight); }, 500);
+			  setTimeout(() => { window.scrollTo(0,document.body.scrollHeight); }, 800);
 			} else {
 				document.getElementById('erreurstat').style.display = "inline-block";
 			}
