@@ -64,16 +64,22 @@ class RequestHandler(http.server.SimpleHTTPRequestHandler):
     liststations.sort()
     liststations = [stat for stat in liststations if not stat == '']
   
-#    c.execute("SELECT lien,alt FROM cache WHERE stations =\'"+strstation+"\' AND pas = '"+pas+"' AND datedebut = '"+datdeb[:13]+"' AND datefin = '"+datfin[:13]+"';")
-#    r = c.fetchall()
-#    print(r)
-#    if len(r) !=0:
-#        link,alt = r[0]
-#    else:
-#        print(datdeb,datfin,liststations,pas)
-#        link,alt = courbes.creationcourbe(datdeb,datfin,liststations,pas)
+    strstation = ''
+    for station in stations:
+        strstation = strstation + str(station)
 
-    link,alt = courbes.creationcourbe(datdeb,datfin,liststations,pas)
+    c.execute("SELECT lien,alt FROM cache WHERE stations =\'"+strstation+"\' AND pas = '"+pas+"' AND datedebut = '"+datdeb[:13]+"' AND datefin = '"+datfin[:13]+"';")
+    r = c.fetchall()
+    # test si graphique deja generee
+    if r == []:
+        print(datdeb,datfin,liststations,pas)
+        link,alt = courbes.creationcourbe(datdeb,datfin,liststations,pas)
+        #enregistrement dans la base de donnees
+        c.execute('INSERT INTO cache (stations, datedebut, datefin, pas, lien,alt) VALUES ("'+str(strstation)+'","'+str(datdeb[:13])+'","'+str(datfin[:13])+'","'+str(pas)+'","'+str(link)+'","'+str(alt)+'");')
+        conn.commit()
+    else:
+        link,alt = r[0]
+
     body = json.dumps({"linkimg": link,"alt":alt})
     headers = [('Content-Type','application/json')]
     self.send(body,headers)
