@@ -55,7 +55,9 @@
 		</aside>
 		<div class="cartegraph">
 			<div id="map"></div>  
-			<div id="arrondissements"></div> 
+			<div id="arrondissements">
+				<h3>Cliquez pour rajouter des quartiers entiers : </h3><br>
+			</div> 
 			<div id="graphe"></div>
 		</div>
 	</section>
@@ -122,7 +124,7 @@
 			// boucle sur les arrondissement renvoyés
 			var arrond = document.getElementById('arrondissements'); // affichage de la station selectionnee
 			for ( n = 0; n < data.length; n++ ) {
-				arrond.innerHTML += '<button onclick="ajoutarrond('+data[n].arrondissement+')">'+data[n].arrondissement+'</button>';
+				arrond.innerHTML += '<button onclick="ajoutarrond(\''+data[n].arrondissement+'\')">'+data[n].arrondissement+'</button>';
 				}
 			};
 		

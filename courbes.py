@@ -23,7 +23,9 @@ def creationcourbe(date_deb,date_fin,stats,pas):
     pas = int(pas) // 5
     strstation =''
     
-    arrs=['VILLEURBANNE','Lyon 7 ème','Lyon 8 ème','Lyon 6 ème','Lyon 5 ème','Lyon 4 ème','Lyon 3 ème','Lyon 9 ème','Lyon 2 ème','Lyon 1 er']
+    c.execute("SELECT commune FROM stations GROUP BY commune HAVING COUNT(*) > 15 ORDER BY commune ASC;")
+    r=c.fetchall()
+    arrs=[a[0].strip() for a in r]
     S=[]
     for s in stats:
         if s in arrs:
