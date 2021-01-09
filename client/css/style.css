@@ -59,7 +59,7 @@ button:hover{
 /* Accueil */
 
 .background{
-	background-image:url("../images/Image_arriere_plan_foncée.jpg");
+	background-image:url("../images/Image_arriere_plan_moins_foncée.jpg");
 	background-attachment:fixed;
 	background-size:cover;
 	background-position: 10% 0;
@@ -263,6 +263,7 @@ aside button{
 
 .footer{
 	display:block;
+	vertical-align:middle;
 	bottom:0;
 	left:0;
 	width:100%;
@@ -273,7 +274,7 @@ aside button{
 
 #icon-style {
 	float:right;
-	width:3%;
+	width:3.5%;
 	margin:0.1% 0.1% 0.1% 0.1%;
 }
 
@@ -281,16 +282,13 @@ aside button{
 	font-family:'Raleway Regular', sans-serif;
 	text-align:center;
 	vertical-align:middle;
+	font-size:130%;
 	color:black;
 	margin:0.1% 0.1% 0.1% 0.1%;
 }
 
-.footer-carte{
-	display:block;
-	bottom:0;
-	left:0;
-	width:100%;
-	background-color: white;
-	align-items:center;
-	padding:0;
+#icon-left{
+	float:left;
+	width:8%;
+	padding: 0% 0% 4% 0%;
 }
