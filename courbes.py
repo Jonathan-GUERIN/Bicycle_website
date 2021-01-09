@@ -23,7 +23,9 @@ def creationcourbe(date_deb,date_fin,stats,pas):
     pas = int(pas) // 5
     strstation =''
     
-    arrs=['VILLEURBANNE','Lyon 7 ème','Lyon 8 ème','Lyon 6 ème','Lyon 5 ème','Lyon 4 ème','Lyon 3 ème','Lyon 9 ème','Lyon 2 ème','Lyon 1 er']
+    c.execute("SELECT commune FROM stations GROUP BY commune HAVING COUNT(*) > 15 ORDER BY commune ASC;")
+    r=c.fetchall()
+    arrs=[a[0].strip() for a in r]
     S=[]
     for s in stats:
         if s in arrs:
@@ -58,20 +60,15 @@ def creationcourbe(date_deb,date_fin,stats,pas):
         plt.plot_date(x_pas,y_pas,linestyle='dashed',label=idstation[i][1])
 
     
-    # c.execute("SELECT id from cache")
-    # req=c.fetchall()
-    # ids=[ e[0]for e in req ]
-    # id=max(ids)+1
-    id = 1
+    c.execute("SELECT id from cache ORDER BY id DESC LIMIT 1")
+    req = c.fetchall()
+    print(req)
+    if req == []:
+        id = 1
+    else:
+        id = req[0][0]+1
     
     alt = '_'.join([str(s) for s in stations])
-
-    #nettoyage chane pour eviter bug d'enregistrement
-    # string = alt.split(' ')
-    # stations = ''.join([str(s) for s in string])
-
-    # string = stations.split('/')
-    # stations = ''.join([str(s) for s in string])
 
     plt.grid()
     plt.legend()
@@ -80,17 +77,9 @@ def creationcourbe(date_deb,date_fin,stats,pas):
     plt.xlabel("Date")
     plt.title("Taux de disponibilité des vélo'v")
     
-    # string = date_deb[:13]+date_fin[:13]+str(pas)
-    # string = string + stations
-    # string = string +'.jpg'
-    
+    #enregistrement du graphique
     link=str(id)+'.jpg'
     plt.savefig('client/images/graphes/'+link)
-    
-
-
-    # c.execute('INSERT INTO cache (stations, datedebut, datefin, pas, lien,alt,id) VALUES ("'+str(strstation)+'","'+str(date_deb[:13])+'","'+str(date_fin[:13])+'","'+str(pas)+'","'+str(link)+'","'+str(alt)+'","'+str(id)+'");')
-    # conn.commit()
 
 
     return link,alt
