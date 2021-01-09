@@ -21,6 +21,10 @@ class RequestHandler(http.server.SimpleHTTPRequestHandler):
   # on surcharge la méthode qui traite les requêtes GET
   def do_GET(self):
     self.init_params()
+    
+    # renvoie tous les arrondissements
+    if self.path_info[0] == 'arrondissements':
+        self.send_arrondissements()
 
     # renvoie toute les stations
     if self.path_info[0] == 'stations':
@@ -94,6 +98,12 @@ class RequestHandler(http.server.SimpleHTTPRequestHandler):
     headers = [('Content-Type','application/json')];
     body = json.dumps([{'nom':n, 'lat':lat, 'lon': lon} for (n,lat,lon) in r])
     self.send(body,headers)
+
+    #renvoie tous les arrondissements
+  def send_arrondissements(self):
+      c.execute("SELECT commune FROM stations")
+      s=c.fetchall()
+      print(s)
 
   # on envoie le document statique demandé
   def send_static(self):
