@@ -77,7 +77,7 @@ button:hover{
 /* Accueil */
 
 .background{
-	background-image:url("../images/Image_arriere_plan_foncée.jpg");
+	background-image:url("../images/Image_arriere_plan_moins_foncée.jpg");
 	background-attachment:fixed;
 	background-size:cover;
 	background-position: center 90px;
