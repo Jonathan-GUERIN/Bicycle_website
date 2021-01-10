@@ -113,6 +113,21 @@
 		
 		xhr.open('GET','/stations',true);
 		xhr.send();
+
+
+		var xhr = new XMLHttpRequest();
+		xhr.onload = function() {   // fonction callback
+			// récupération des données renvoyées par le serveur
+			var data = JSON.parse(this.responseText);
+			// boucle sur les arrondissement renvoyés
+			var arrond = document.getElementById('arrondissements'); // affichage de la station selectionnee
+			for ( n = 0; n < data.length; n++ ) {
+				arrond.innerHTML += '<button id ="bouton_'+data[n].arrondissement.replace(' ','')+'" onclick="ajoutarrond(\''+data[n].arrondissement+'\')">'+data[n].arrondissement+'</button>';
+				}
+			};
+		
+		xhr.open('GET','/arrondissements',true);
+		xhr.send();
 	}
 	
 	function OnMarkerClick(e) {
@@ -134,6 +149,25 @@
 		}
 	}
 	
+	function ajoutarrond(e) {
+		document.getElementById('aideselstat').style.display = "none"; // invisibilise l'aide
+		if (listeselstation.indexOf(e) === -1) {
+			// station pas deja selectionnee
+			listeselstation[idstat] = e; // ajout station dans list
+			var legende = document.getElementById('selectstation'); // affichage de la station selectionnee
+			legende.innerHTML += '<span id=station'+idstat+'>'+e+'<br></span>';
+			document.getElementById('erreurstat').style.display = "none"; // invisibilise l'erreur de pas de station selectionnee
+			idstat+=1;
+			document.getElementById('bouton_'+e.replace(' ','')).style.backgroundColor = "#950000";
+		} else {
+			// station deja selectionnee
+			var i = listeselstation.indexOf(e)
+			listeselstation[i] = "";
+			document.getElementById('station'+i).remove();
+			document.getElementById('bouton_'+e.replace(' ','')).style.backgroundColor = "red";
+		}
+	}
+
 	function Affichegraphe () {
 		var xhr = new XMLHttpRequest(); 
 		  var pas = document.getElementById('pas').options[document.getElementById('pas').selectedIndex].value;
