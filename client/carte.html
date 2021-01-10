@@ -46,24 +46,26 @@
 						<option value="1440">1 jour</option>
 					</select>
 				</fieldset>
-
+				<button onclick="Affichegraphe()">Afficher graphe</button>
 				<h3>Stations sélectionnées</h3>
 				<p id="aideselstat">Cliquez sur une icône pour la sélectionner</p>
 				<p id="erreurstat">Vous devez sélectionner au moins une station</p>
 				<p id="selectstation"></p>
-				<button onclick="Affichegraphe()">Afficher graphe</button>
 			</div>
 		</aside>
 		<div class="cartegraph">
 			<div id="map"></div>  
+			<div id="arrondissements">
+				<h3>Cliquez pour rajouter des quartiers entiers : </h3><br>
+			</div> 
 			<div id="graphe"></div>
 		</div>
 	</section>
 	<footer>
-		<div class="footer">
-			<a href="https://play.google.com/store/apps/details?id=com.jcdecaux.vls.lyon"><img src="images/logo_playstore.jpg" class="icon-style"></a>
-			<a href="https://apps.apple.com/app/id1356108037"><img src="images/logo_appstore.jpg" class="icon-style"></a>
-			<a href = "https://www.facebook.com/velov.officiel"><img src="images/logo_facebook.jpg" class="icon-style"></a>
+		<div class="footer-content-right">
+			<a href = "https://www.facebook.com/velov.officiel" target="_blank"><img src="images/logo_facebook.jpg" class="icon-style"></a>
+			<a href="https://apps.apple.com/app/id1356108037" target="_blank"><img src="images/logo_appstore.jpg" class="icon-style"></a>
+			<a href="https://play.google.com/store/apps/details?id=com.jcdecaux.vls.lyon" target="_blank"><img src="images/logo_playstore.jpg" class="icon-style"></a>
 		</div>
 	</footer>
 
@@ -180,7 +182,7 @@
 				console.log(data)
 				// affichage du graphe
 				nbgraphe += 1;
-				document.getElementById('graphe').innerHTML = document.getElementById('graphe').innerHTML +'<img id="graphe'+nbgraphe+'"src="images/graphes/' +data.linkimg+'" alt="courbe de disponibilité de '+data.alt+'""></img>';
+				document.getElementById('graphe').innerHTML = document.getElementById('graphe').innerHTML +'<img onload="deplacement()" id="graphe'+nbgraphe+'"src="images/graphes/' +data.linkimg+'" alt="courbe de disponibilité de '+data.alt+'""></img>';
 				
 				//reinitilise le js
 				document.getElementById('selectstation').innerHTML = "";
@@ -191,9 +193,12 @@
 				};
 			  xhr.open('GET','/courbe?stations='+listeselstation.slice(0,idstat)+'&datedebut='+datdeb+'&datefin='+datfin+'&pas='+pas,true);  // requête avec une "query string"
 			  xhr.send();
-			  setTimeout(() => { window.scrollTo(0,document.body.scrollHeight); }, 500);
 			} else {
 				document.getElementById('erreurstat').style.display = "inline";
 			}
+		}
+		
+		function deplacement(){
+			window.scrollTo(0,document.body.scrollHeight);
 		}
 </script>
