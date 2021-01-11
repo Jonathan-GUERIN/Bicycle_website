@@ -37,10 +37,10 @@ Notre Dossier principale contient:
 Résultat final en captures d'écran
 ==========
 La page d'accueil:
-![screenshot](capture1.png)
+![screenshot](client/images/capture1.png)
 
 La page de la carte:
-![screenshot](capture2.png)
+![screenshot](client/images/capture2.png)
 
 
 
