@@ -73,8 +73,8 @@ def creationcourbe(date_deb,date_fin,stats,pas):
     plt.grid()
     plt.legend()
     
-    xfmt = pltd.DateFormatter('%d-%m-%y %H:%M')
-    x.xaxis.set_major_formatter(xfmt)
+    # xfmt = pltd.DateFormatter('%d-%m-%y %H:%M')
+    # x.xaxis.set_major_formatter(xfmt)
     
     plt.ylabel("Taux de disponibilité")
     plt.xlabel("Date")
