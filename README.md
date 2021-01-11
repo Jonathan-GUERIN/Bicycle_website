@@ -36,7 +36,11 @@ Notre Dossier principale contient:
 
 Résultat final en captures d'écran
 ==========
+La page d'accueil:
+![screenshot](client/images/Capture1.PNG)
 
+La page de la carte:
+![screenshot](client/images/Capture2.PNG)
 
 
 
