@@ -1,4 +1,8 @@
 ﻿/* commun */
+html {
+	scroll-behavior: smooth;
+}
+
 body {
 	font-family: 'Raleway Regular', sans-serif;
 	margin: 0;
