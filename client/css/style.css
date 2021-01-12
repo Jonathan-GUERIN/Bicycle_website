@@ -322,7 +322,27 @@ aside button{
 
 	.nav{
 	padding: 2px 3% 2px 7%;
-	width: 90%;
+	width:90%;
+	}
+	
+	.titre{
+	width:100%;
 	}
 
+	.titre h2{
+	width: 100%;
+	padding:0;
+	}
+
+	.titresection1{
+	width:100%;
+	}
+
+	.titreoffre{
+	margin-left:0;
+	}
+
+	button{
+	margin:0;
+	}
 }
