@@ -49,7 +49,8 @@
 				<button onclick="Affichegraphe()">Afficher graphe</button>
 				<h3>Stations sélectionnées</h3>
 				<p id="aideselstat">Cliquez sur une icône pour la sélectionner</p>
-				<p id="erreurstat">Vous devez sélectionner au moins une station</p>
+				<p id="erreurstat">Vous devez sélectionner au moins une station !</p>
+				<p id="erreurdate">La date de début doit être avant la date de fin !</p>
 				<p id="selectstation"></p>
 			</div>
 		</aside>
@@ -178,29 +179,35 @@
 
 	function Affichegraphe () {
 		var xhr = new XMLHttpRequest(); 
-		  var pas = document.getElementById('pas').options[document.getElementById('pas').selectedIndex].value;
-		  var datdeb = document.getElementById('datedebut').value;
-		  var datfin = document.getElementById('datefin').value;
-		  if (idstat!==0){ 
-			  xhr.onload = function() {   // fonction callback
-				// récupération des données renvoyées par le serveur
-				var data = JSON.parse(this.responseText);
-				console.log(data)
-				// affichage du graphe
-				nbgraphe += 1;
-				document.getElementById('graphe').innerHTML = document.getElementById('graphe').innerHTML +'<img onload="deplacement()" id="graphe'+nbgraphe+'"src="images/graphes/' +data.linkimg+'" alt="courbe de disponibilité de '+data.alt+'""></img>';
-				
-				//reinitilise le js
-				document.getElementById('selectstation').innerHTML = "";
-				document.getElementById('aideselstat').style.display = "inline"; 
-				listeselstation = [];
-				listeselstation.length = nbstat*3;
-				idstat = 0;
-				};
-			  xhr.open('GET','/courbe?stations='+listeselstation.slice(0,idstat)+'&datedebut='+datdeb+'&datefin='+datfin+'&pas='+pas,true);  // requête avec une "query string"
-			  xhr.send();
-			} else {
-				document.getElementById('erreurstat').style.display = "inline";
+			var pas = document.getElementById('pas').options[document.getElementById('pas').selectedIndex].value;
+			var datdeb = document.getElementById('datedebut').value;
+			var datfin = document.getElementById('datefin').value;
+		  	if(datdeb > datfin){
+				document.getElementById('erreurdate').style.display = "inline";
+			}
+			else{
+			if (idstat!==0){ 
+				xhr.onload = function() {   // fonction callback
+					// récupération des données renvoyées par le serveur
+					var data = JSON.parse(this.responseText);
+					console.log(data)
+					// affichage du graphe
+					nbgraphe += 1;
+					document.getElementById('graphe').innerHTML = document.getElementById('graphe').innerHTML +'<img onload="deplacement()" id="graphe'+nbgraphe+'"src="images/graphes/' +data.linkimg+'" alt="courbe de disponibilité de '+data.alt+'""></img>';
+					
+					//reinitilise le js
+					document.getElementById('selectstation').innerHTML = "";
+					document.getElementById('aideselstat').style.display = "inline";
+					document.getElementById('erreurdate').style.display = "none";  
+					listeselstation = [];
+					listeselstation.length = nbstat*3;
+					idstat = 0;
+					};
+				xhr.open('GET','/courbe?stations='+listeselstation.slice(0,idstat)+'&datedebut='+datdeb+'&datefin='+datfin+'&pas='+pas,true);  // requête avec une "query string"
+				xhr.send();
+				} else {
+					document.getElementById('erreurstat').style.display = "inline";
+				}
 			}
 		}
 		

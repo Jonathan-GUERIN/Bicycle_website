@@ -221,6 +221,11 @@ aside button{
 	display:none;
 }
 
+#erreurdate {
+	color:red;
+	display:none;
+}
+
 #aideselstat{
 	color:grey;
 	display:inline;
@@ -310,4 +315,14 @@ aside button{
 		width:96%;
 		position:relative;
 	}
+	
+	.nav img:last-child {
+		display : none;
+	}
+
+	.nav{
+	padding: 2px 3% 2px 7%;
+	width: 90%;
+	}
+
 }
