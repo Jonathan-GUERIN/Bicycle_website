@@ -47,15 +47,16 @@ def creationcourbe(date_deb,date_fin,stats,pas):
             y = [float(a[1]/idarrond[0][2])*100 for a in requete if not a[1] == '']
             y_pas=[y[pas*i] for i in range(int(len(y)//pas))]
             Y=np.array(y_pas)
-            
+            nb =0
             for i in range(1,len(idarrond)):
                 c.execute("SELECT time_ISO,bikes FROM historique WHERE velov_number='velov-"+str(idarrond[i][0])+"' AND time_ISO > '"+d+"' and time_ISO<'"+f+"' ORDER BY time_ISO;")
                 requete = c.fetchall()
                 y = [float(a[1]/idarrond[i][2])*100 for a in requete if not a[1] == '']
                 y_pas=[y[pas*i] for i in range(int(len(y)//pas))]
-                if len(y_pas)!=0:
+                if len(y_pas)== len(Y):
                     Y = Y+ np.array(y_pas)
-            Y=Y/len(idarrond)
+                    nb+=1
+            Y=Y/nb
             plt.plot_date(x_pas,Y,linestyle='dashed',label='Moyenne '+s)
                 
         else:

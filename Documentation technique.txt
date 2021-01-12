@@ -1,0 +1,15 @@
+Documentation technique 
+
+1) Puller notre gitlab
+2) Lancer le fichier serveur.py
+3) Ouvrir Chrome ou Edge sur localhost:8080
+4) Vous arrivez sur la page d'accueil
+5) Vous pouvez ensuite aller sur la page CARTE pour aller faire apparaître 
+   les graphiques affichant les disponibilités. 
+
+Pour afficher un graphe : 
+1) Choisissez des dates et horaires de début et de fin entre le 15/11/2020 4:00
+   et le 18/11/2020 4:00.
+2) Sélectionnez ensuite une ou plusieurs stations 
+3) Cliquez sur Afficher Graphe
+4) Le graphe s'affiche en dessous de la carte
