@@ -204,6 +204,11 @@ aside button{
 	display:none;
 }
 
+#erreurdate {
+	color:red;
+	display:none;
+}
+
 #aideselstat{
 	color:grey;
 	display:inline;
