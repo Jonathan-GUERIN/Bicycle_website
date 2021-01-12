@@ -38,8 +38,9 @@ def creationcourbe(date_deb,date_fin,stats,pas):
             for stat in listarrond:
                 c.execute("SELECT DISTINCT idstation,nbbornette FROM stations WHERE nom = '"+str(stat)+"';")
                 requete = c.fetchall()
-                idarrond.append((requete[0][0],stat,requete[0][1]))
-                strstation = strstation + str(stat)
+                if requete != []:
+                    idarrond.append((requete[0][0],stat,requete[0][1]))
+                    strstation = strstation + str(stat)
             c.execute("SELECT time_ISO,bikes FROM historique WHERE velov_number='velov-"+str(idarrond[0][0])+"' AND time_ISO > '"+d+"' and time_ISO<'"+f+"' ORDER BY time_ISO;")
             requete = c.fetchall()
             x = [pltd.date2num(dt.datetime(int(a[0][:4]),int(a[0][5:7]),int(a[0][8:10]),int(a[0][11:13]),int(a[0][14:16]),1)) for a in requete if not a[1] == ''] 
