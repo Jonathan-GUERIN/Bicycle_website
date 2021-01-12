@@ -1,0 +1,38 @@
+CDCF
+
+Nom du groupe : groupe A
+Nom du projet : Vélo'v
+Personne à contacter dans le projet : Arthur Cosson
+Adresse mail : arthur.cosson@ecl20.ec-lyon.fr
+
+# Contexte : 
+
+- accéder aux disponibilités des Vélo'v dans une station pendant un lapse de temps choisi entre le 15/11/2020 et le 18/11/2020
+- accéder à la moyenne des disponibilités des Vélo'v dans les stations d'un arrondissement de Lyon donné pendant un lapse de temps choisi entre le 15 et le 18
+- pouvoir analyser ces données
+
+# Objectifs :
+
+- afficher une page d'accueil (bouton 'accueil') avec les différentes offres et programmes des Vélo'v
+- afficher la carte des stations Vélo'v suite à un clic sur le bouton 'Carte'
+- barre de configuration du pas du graphique et des dates de début et de fin
+- pouvoir sélectionner les stations sur la carte ou les arrondissements sur les boutons
+
+# Périmètre :
+
+- limites du projet : dates comprises entre 15/11/2020 et 18/11/2020
+- affichage de graphes vides quand absence de données
+
+# Ressources : 
+
+- la base de données SQL des disponibilités des Vélo'v
+- 5 membres dans l'équipe
+- images 
+
+# Budget : 
+
+- 1 mois de travail
+
+# Délais :
+
+- opérationnel pour le mardi 12/01/2021
