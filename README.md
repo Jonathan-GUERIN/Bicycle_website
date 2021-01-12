@@ -4,10 +4,13 @@ Description générale
 ==========
 Vélo’v est un réseau de vélos en libre-service sur Lyon.
 Le but de ce projet est de créer une application web qui permet aux utilisateurs de ce service de visualiser de manière simple et intuitive la disponibilité des vélos dans les stations sélectionnées sur une carte glissante. Le résultat sera affiché sur des graphes.
+
 L'utilisateur aura accès,en plus des stations/arrondissements sélectionnées, à un jeu de paramètres à choisir:
 1. la date de début 
 2. la date de fin
 3. le pas de temps  
+
+L'utilisateur peut également selectionner un arrondissement pour afficher la moyenne des disponibilités de ses stations. 
 
 
 Instructions de lancement du site 
