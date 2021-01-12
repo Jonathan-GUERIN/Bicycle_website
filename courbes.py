@@ -17,7 +17,7 @@ c = conn.cursor()
 
 def creationcourbe(date_deb,date_fin,stats,pas):
     
-    plt.figure(figsize=(18,4))
+    fig, ax = plt.subplots(1,figsize=(18,4))
     d=date_deb +'+00:00'
     f=date_fin +'+00:00'
     pas = int(pas) // 5
@@ -58,6 +58,8 @@ def creationcourbe(date_deb,date_fin,stats,pas):
         x_pas=[x[pas*i] for i in range(int(len(x)//pas))] 
         y_pas=[y[pas*i] for i in range(int(len(y)//pas))]
         plt.plot_date(x_pas,y_pas,linestyle='dashed',label=idstation[i][1])
+        xfmt = pltd.DateFormatter('%d-%m-%y %H:%M')
+        ax.xaxis.set_major_formatter(xfmt)
 
     
     c.execute("SELECT id from cache ORDER BY id DESC LIMIT 1")
@@ -73,8 +75,6 @@ def creationcourbe(date_deb,date_fin,stats,pas):
     plt.grid()
     plt.legend()
     
-    # xfmt = pltd.DateFormatter('%d-%m-%y %H:%M')
-    # x.xaxis.set_major_formatter(xfmt)
     
     plt.ylabel("Taux de disponibilité")
     plt.xlabel("Date")
